@@ -11,8 +11,9 @@
 
 #navbar-title {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.6rem;
     height: fit-content;
+    font-weight: 600;
 }
 
 .navbar-item {

@@ -1,9 +1,19 @@
 import { NavLink } from "react-router-dom";
 import './Navbar.css'
 import Typewriter from "../features/Typewriter";
+import React from 'react'
 
-export default function Navbar(props) {
-    let navBarButtons = []
+interface Page {
+    name: string;
+    link: string;
+}
+
+interface NavbarProps {
+    pages : Array<Page>
+}
+
+export default function Navbar(props: NavbarProps) {
+    let navBarButtons: Array<JSX.Element> = []
 
     // Creates each of the navbar links provided
     props.pages.forEach(page => {
@@ -13,7 +23,7 @@ export default function Navbar(props) {
     return (
         <div id="navbar-wrapper">
             <div className="invis navbar-item"></div>
-            <Typewriter className="navbar-item" id="navbar-title" text="WEBSITE" msDelay={100} tag="h1" />
+            <Typewriter childClass="navbar-item" childId="navbar-title" text="WEBSITE" msDelay={100} />
             <div className="navbar-item">
                 <div id="navbar-link-wrapper">
                     {navBarButtons}
@@ -23,6 +33,6 @@ export default function Navbar(props) {
     );
 }
 
-const createNavbarButton = (name, link) => {
+const createNavbarButton = (name: string, link: string) => {
     return <NavLink className="us-link hover-underline normal-txt" to={link}>{name}</NavLink>;
 }
