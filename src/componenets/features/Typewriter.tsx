@@ -7,7 +7,7 @@ interface TypewriteProps {
     childId: string;
 }
 
-export default function Typewriter(props: TypewriteProps) {
+export default function Typewriter(props: TypewriteProps): JSX.Element {
     const index = useRef(0);
     const [currentText, setCurrentText] = useState('');
     

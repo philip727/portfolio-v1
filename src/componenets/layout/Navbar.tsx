@@ -12,7 +12,7 @@ interface NavbarProps {
     pages : Array<Page>
 }
 
-export default function Navbar(props: NavbarProps) {
+export default function Navbar(props: NavbarProps): JSX.Element {
     let navBarButtons: Array<JSX.Element> = []
 
     // Creates each of the navbar links provided
@@ -33,6 +33,6 @@ export default function Navbar(props: NavbarProps) {
     );
 }
 
-const createNavbarButton = (name: string, link: string) => {
+const createNavbarButton = (name: string, link: string): JSX.Element => {
     return <NavLink className="us-link hover-underline normal-txt" to={link}>{name}</NavLink>;
 }
