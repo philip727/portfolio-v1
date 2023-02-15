@@ -15,7 +15,7 @@ interface NavbarProps {
 export default function Navbar(props: NavbarProps): JSX.Element {
     let navBarButtons: Array<JSX.Element> = []
 
-    // Creates each of the navbar links provided
+    // Creates a link with each page provided
     props.pages.forEach(page => {
         navBarButtons.push(createNavbarButton(page.name, page.link))
     })

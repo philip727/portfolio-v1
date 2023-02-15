@@ -1,23 +1,26 @@
-import React, { useState, useEffect, useRef, ComponentType } from "react";
+import React, { useState, useEffect, useRef, MutableRefObject, Dispatch, SetStateAction } from "react";
 
 interface TypewriteProps {
     text: string;
     msDelay: number;
-    childClass: string;
-    childId: string;
+    childClass?: string;
+    childId?: string;
 }
 
 export default function Typewriter(props: TypewriteProps): JSX.Element {
-    const index = useRef(0);
-    const [currentText, setCurrentText] = useState('');
+    const index: MutableRefObject<number> = useRef(0);
+    const [currentText, setCurrentText]: [string, Dispatch<SetStateAction<string>>] = useState('');
     
+    // If the text is changed, then on re-render we need to reset
     useEffect(() => {
         index.current = 0;
         setCurrentText('');
     }, [props.text])
     
+
+    // Slowly types out the provided text at x speed
     useEffect(() => {
-        const timeout = setTimeout(() => {
+        const timeout: NodeJS.Timeout = setTimeout(() => {
             setCurrentText((value) => value + props.text.charAt(index.current));
             index.current++;
         }, props.msDelay);
