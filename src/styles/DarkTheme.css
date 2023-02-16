@@ -1,0 +1,18 @@
+:root {
+    /* DARK */
+    --dark-background-color: #222222;
+    --dark-font-color: rgb(255, 255, 255);
+}
+
+.dark {
+    background-color: var(--dark-background-color);
+    color: var(--dark-font-color);
+}
+
+.dark .hover-underline::after {
+    background-color: #ffffff;
+}
+
+.dark .normal-txt {
+    color: #b0b0b0;
+}

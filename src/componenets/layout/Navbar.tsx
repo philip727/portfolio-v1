@@ -39,8 +39,8 @@ export default function Navbar(props: NavbarProps): JSX.Element {
             <div className="navbar-item" id="navbar-btn-wrapper" >
                 <div id="theme-button" onClick={toggleTheme}>SWAP</div>
             </div>
-            {/* <Typewriter childClass="navbar-item" childId="navbar-title" text="HELLO" msDelay={100} /> */}
-            <h1 className="navbar-item" id="navbar-title">PHILIP</h1>
+            {/* <Typewriter childClass="navbar-item" childId="navbar-title" text="WEBSITE" msDelay={100} /> */}
+            <h1 className="navbar-mid-item" id="navbar-title">WEBSITE</h1>
             <div className="navbar-item">
                 <div id="navbar-link-wrapper">
                     {navBarButtons}

@@ -1,0 +1,11 @@
+:root {
+    /* LIGHT */
+    --light-background-color: #ffffff;
+    --light-font-color: #111111;
+    --light-shaded-font-color: #5b5b5b;
+}
+
+.light {
+    background-color: var(--light-background-color);
+    color: var(--light-font-color);
+}

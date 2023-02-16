@@ -1,13 +1,3 @@
-:root {
-    /* LIGHT */
-    --light-background-color: #ffffff;
-    --light-font-color: #5b5b5b;
-
-    /* DARK */
-    --dark-background-color: #222222;
-    --dark-font-color: rgb(255, 255, 255);
-}
-
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -24,18 +14,12 @@ code {
 
 body * {
     margin: 0 0 0 0;
+    transition: color 0.1s;
 }
 
-.light {
-    background-color: var(--light-background-color);
-    color: var(--light-font-color);
+body {
+    transition: background-color 0.3s;
 }
-
-.dark {
-    background-color: var(--dark-background-color);
-    color: var(--dark-font-color);
-}
-
 
 .invis {
     color: rgb(0, 0, 0, 0);
@@ -83,6 +67,7 @@ body * {
 .hover-underline {
     display: inline-block;
     position: relative;
+    transition: color 0s;
 }
 
 .hover-underline::after {
