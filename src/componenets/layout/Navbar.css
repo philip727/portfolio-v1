@@ -34,3 +34,9 @@
     font-size: 1.3rem;
     text-align: center;
 }
+
+#navbar-btn-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import './Navbar.css'
 import Typewriter from "../features/Typewriter";
-import React from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 interface Page {
     name: string;
@@ -14,16 +14,33 @@ interface NavbarProps {
 
 export default function Navbar(props: NavbarProps): JSX.Element {
     let navBarButtons: Array<JSX.Element> = []
+    const [theme, setTheme]: [string, Dispatch<SetStateAction<string>>] = useState('light')
 
     // Creates a link with each page provided
     props.pages.forEach(page => {
         navBarButtons.push(createNavbarButton(page.name, page.link))
     })
 
+    const toggleTheme = () => {
+        if(theme == 'light') {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+        
+    }
+    
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme])
+
     return (
         <div id="navbar-wrapper">
-            <div className="invis navbar-item"></div>
-            <Typewriter childClass="navbar-item" childId="navbar-title" text="WEBSITE" msDelay={100} />
+            <div className="navbar-item" id="navbar-btn-wrapper" >
+                <div id="theme-button" onClick={toggleTheme}>SWAP</div>
+            </div>
+            {/* <Typewriter childClass="navbar-item" childId="navbar-title" text="HELLO" msDelay={100} /> */}
+            <h1 className="navbar-item" id="navbar-title">PHILIP</h1>
             <div className="navbar-item">
                 <div id="navbar-link-wrapper">
                     {navBarButtons}

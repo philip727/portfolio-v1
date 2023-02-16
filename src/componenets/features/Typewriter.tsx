@@ -10,9 +10,9 @@ interface TypewriteProps {
 export default function Typewriter(props: TypewriteProps): JSX.Element {
     const index: MutableRefObject<number> = useRef(0);
     const [currentText, setCurrentText]: [string, Dispatch<SetStateAction<string>>] = useState('');
-    
-    // If the text is changed, then on re-render we need to reset
-    useEffect(() => {
+
+    // If the text is changed, then re-render the text
+    useEffect((): void => {
         index.current = 0;
         setCurrentText('');
     }, [props.text])
@@ -25,7 +25,7 @@ export default function Typewriter(props: TypewriteProps): JSX.Element {
             index.current++;
         }, props.msDelay);
         
-        return () => {
+        return (): void => {
             clearTimeout(timeout);
         }
     }, [currentText])
