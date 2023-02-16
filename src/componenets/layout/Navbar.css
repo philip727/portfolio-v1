@@ -4,14 +4,14 @@
     justify-content: space-between;
     align-items: center;
     width: 100vw;
-    height: clamp(min(6vw, 40px), min(6.6vw, 6vh), 6vh);
-    backdrop-filter: blur(12px);
+    height: clamp(min(9vw, 40px), min(6.6vw, 6vh), 6vh);
+    /* backdrop-filter: blur(12px); */
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 #navbar-title {
     text-align: center;
-    font-size: min(1.6rem, 4vw);
+    font-size: min(2rem, 5vw);
     height: fit-content;
     font-weight: 600;
 }
@@ -22,7 +22,7 @@
 }
 
 .navbar-mid-item {
-    width: min(10%, 33%)
+    width: clamp(10%, 33%, 33%)
 }
 
 #navbar-link-wrapper {
@@ -31,11 +31,12 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: max(4%, 1rem);
+    /* gap: max(4%, 1rem); */
+    gap: min(min(4vw, 4%), 1rem)
 }
 
 #navbar-link-wrapper > a {
-    font-size: min(1.3rem, 2.3vw);
+    font-size: min(1.3rem, 3.3vw);
     text-align: center;
 }
 
@@ -43,4 +44,16 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+
+@media screen and (min-width:1000px) {
+    #navbar-link-wrapper {
+        gap: max(4%, 1.8rem)
+    }
+}
+
+@media screen and (max-width:1000px) {
+    #navbar-wrapper { 
+        justify-content: space-evenly;
+    }
 }
