@@ -22,6 +22,10 @@ function App() {
                         name: "Blog",
                         link: "/blog"
                     },
+                    {
+                        name: "Contact",
+                        link: "/contact"
+                    },
                     ]} />
             </header>
             <main>

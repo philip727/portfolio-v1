@@ -1,5 +1,5 @@
 import React from "react";
-import './Home.css'
+import "./Home.css";
 
 export default function Home(): JSX.Element {
     return (
@@ -9,10 +9,16 @@ export default function Home(): JSX.Element {
                 <div id="middle-line" className="diagonal mega-thick-line full-width line-grad">
                     <div id="middle-wrapper">
                         <div id="middle-title-wrapper">
-                            <div className="side-line"></div><h1 className="big-title">ABOUT ME</h1><div className="side-line"></div>
+                            <div className="side-line" />
+                            <h1 className="big-title">ABOUT ME</h1>
+                            <div className="side-line" />
                         </div>
-                        <p className="sig-paragraph centred-paragraph">Hello! My name is Philip and I extremely enjoy programming! <br/> I have been developing since 2018
-                        and have developed almost daily since. <br/> Over the years I have worked with quite a few programming languages.
+                        <p id="about-me-paragraph" className="sig-paragraph centred-paragraph">
+                            Hello! My name is Philip and I extremely enjoy
+                            programming! <br /> I have been programming since
+                            2018 and have developed almost daily since. <br />
+                            Over the years I have worked with quite a few
+                            programming languages.
                         </p>
                     </div>
                 </div>

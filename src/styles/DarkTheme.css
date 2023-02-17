@@ -2,6 +2,7 @@
     /* DARK */
     --dark-background-color: #222222;
     --dark-font-color: rgb(255, 255, 255);
+    --dark-highlight-color: #fffaed;
 }
 
 .dark {
@@ -23,4 +24,8 @@
 
 .dark .line-bg::after {
     background-color: #fffaed;
+}
+
+.dark .side-line {
+    background-color: var(--dark-highlight-color);
 }

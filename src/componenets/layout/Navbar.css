@@ -12,7 +12,7 @@
 
 #navbar-title {
     text-align: center;
-    font-size: min(2rem, 5vw);
+    font-size: clamp(2rem, min(3rem, 3vw), 2.4vw);
     height: fit-content;
     font-weight: 600;
 }
@@ -47,7 +47,7 @@
     align-items: center;
 }
 
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 975px) {
     #navbar-title {
         display: none;
     }
@@ -62,7 +62,7 @@
     }
 
     #navbar-link-wrapper > a {
-        font-size: max(3.3vw, 1rem);
+        font-size: max(2.3vw, 1rem);
     }
 }
 

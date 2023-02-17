@@ -23,7 +23,7 @@
 }
 
 .thin-line {
-    height: 2.2vh;
+    height: 1.5rem;
 }
 
 #top-line {
@@ -31,7 +31,7 @@
 }
 
 .mega-thick-line {
-    height: 45vh;
+    height: 35rem;
 }
 
 #middle-line {
@@ -48,6 +48,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 1rem 1rem;
 }
 
 #bottom-line {
@@ -63,7 +64,7 @@
 }
 
 .big-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
 }
 
 .sig-paragraph {
@@ -74,15 +75,24 @@
     text-align: center;
 }
 
+.side-line {
+    height: 2px;
+    width: 260px;
+    transition: background-color 0.3s;
+}
+
 #middle-title-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1vw;
+    gap: 1.7rem;
 }
 
-.side-line {
-    background-color: var(--light-background-color);
-    height: 2px;
-    width: 11vw;
+#middle-title-wrapper > h1 {
+    font-weight: 700;
+}
+
+#about-me-paragraph {
+    margin-top: 0.6rem;
+    font-weight: 500;
 }
