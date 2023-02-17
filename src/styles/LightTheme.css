@@ -1,6 +1,6 @@
 :root {
     /* LIGHT */
-    --light-background-color: #ffffff;
+    --light-background-color: #fffaed;
     --light-font-color: #111111;
     --light-shaded-font-color: #5b5b5b;
 }
@@ -8,4 +8,13 @@
 .light {
     background-color: var(--light-background-color);
     color: var(--light-font-color);
+}
+
+.light .line-grad::after {
+    background-image: linear-gradient(45deg, rgb(98, 243, 224), #29bf9c, #e745c1, #c327ea);
+}
+
+
+.light .line-bg::after {
+    background-color: #222222;
 }

@@ -16,3 +16,11 @@
 .dark .normal-txt {
     color: #b0b0b0;
 }
+
+.dark .line-grad::after {
+    background-image: linear-gradient(45deg, #19e2a3, #1d9d9f, #ef6895, #a76dd4);
+}
+
+.dark .line-bg::after {
+    background-color: #fffaed;
+}
