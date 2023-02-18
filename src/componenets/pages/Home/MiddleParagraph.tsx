@@ -38,7 +38,7 @@ export default function MiddleParagraph() {
         <div className="h-full w-full flex justify-center items-center flex-col m-4">
             <AnimatePresence>
                 <div className="flex justify-center items-center gap-2 lg:gap-6 sm:gap-4">
-                    <motion.div
+                    <motion.span
                         ref={ref}
                         initial="hidden"
                         animate={controls}
@@ -56,7 +56,7 @@ export default function MiddleParagraph() {
                     >
                         ABOUT ME
                     </motion.h1>
-                    <motion.div
+                    <motion.span
                         ref={ref}
                         initial="hidden"
                         animate={controls}

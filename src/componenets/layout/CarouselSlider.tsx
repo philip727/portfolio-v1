@@ -1,5 +1,6 @@
 import React, { Children, ReactNode } from "react";
 import { motion } from 'framer-motion'
+import Tooltip from "../features/Tooltip";
 
 
 interface Slide {
@@ -7,6 +8,7 @@ interface Slide {
     img: string;
     sClassName?: string
     imgClass?: string
+    tooltip?: string
 }
 
 interface Props {
@@ -27,7 +29,7 @@ export default function CarouselSlider({ id, className, slides, duration }: Prop
                     return createSlide(value, index)
                 })}
                 {slides.map((value, index) => {
-                    return createSlide(value, index)
+                    return createSlide(value, (slides.length)+index)
                 })}
             </motion.div>
         </div>
@@ -35,11 +37,13 @@ export default function CarouselSlider({ id, className, slides, duration }: Prop
 }
 
 
-const createSlide = ({ name, img, sClassName, imgClass }: Slide,  index: number): ReactNode => {
+const createSlide = ({ name, img, sClassName, imgClass, tooltip }: Slide,  index: number): ReactNode => {
     return (
-        <motion.div whileHover={{ scale: 1.1 }} key={index} className={sClassName}>
-            <img className={imgClass} src={img} />
-            <p className="text-center m-auto font-medium text-lg">{name}</p>
-        </motion.div>
+        <Tooltip text={tooltip}>
+            <motion.div whileHover={{ scale: 1.1 }} key={index} className={sClassName}>
+                <img className={imgClass} src={img} />
+                <p className="text-center m-auto font-medium text-lg">{name}</p>
+            </motion.div>
+        </Tooltip>
     )
 }

@@ -28,7 +28,7 @@ export default function ThemeButton() {
             whileTap={{ scale: 0.9 }}
         >
             <img
-                className="w-3 h-6 sm:w-4 sm:h-8 md:w-5 md:h-9 lg:w-7 lg:h-11 xl:w-8 xl:h-12 2xl:w-9 2xl:h-14 select-none"
+                className="w-3 h-6 sm:w-4 sm:h-8 md:w-5 md:h-9 lg:w-7 lg:h-11 xl:w-8 xl:h-12 2xl:w-8 2xl:h-12 select-none"
                 src={themeButtonIcon.current}
                 alt="Change Theme Button"
             />

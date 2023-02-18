@@ -36,6 +36,7 @@ export default function Home(): JSX.Element {
                             img: "./images/languages/csharp.svg",
                             sClassName: slideClass,
                             imgClass: imgClass,
+                            tooltip: "My most used and favourite language"
                         },
                         {
                             name: "Python",
@@ -66,6 +67,7 @@ export default function Home(): JSX.Element {
                             img: "./images/languages/tailwindcss.svg",
                             sClassName: slideClass,
                             imgClass: imgClass,
+                            tooltip: "The saviour of CSS",
                         },
                         ]} />
                     
