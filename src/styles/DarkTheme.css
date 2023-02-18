@@ -29,3 +29,12 @@
 .dark .side-line {
     background-color: var(--dark-highlight-color);
 }
+
+.dark #theme-button {
+    background-color: var(--light-background-color);
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 54px 55px, rgba(255, 255, 255, 0.12) 0px -12px 30px, rgba(255, 255, 255, 0.12) 0px 4px 6px, rgba(255, 255, 255, 0.17) 0px 12px 13px, rgba(255, 255, 255, 0.09) 0px -3px 5px;
+}
+ 
+.dark #theme-button img {
+    filter: invert(7%) sepia(8%) saturate(19%) hue-rotate(329deg) brightness(90%) contrast(84%);
+}
