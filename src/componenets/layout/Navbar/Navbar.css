@@ -4,10 +4,7 @@
 }
 
 #navbar-title {
-    text-align: center;
     font-size: clamp(2rem, min(3rem, 3vw), 2.4vw);
-    height: fit-content;
-    font-weight: 600;
 }
 
 .navbar-mid-item {
@@ -32,7 +29,6 @@
     }
 
     #navbar-link-wrapper {
-        justify-content: flex-end;
         margin-right: min(4vw, 1.8rem);
     }
 
@@ -46,8 +42,4 @@
     #navbar-link-wrapper {
         gap: max(4%, 1.8rem)
     }
-}
-
-@media screen and (max-width:1024px) {
-
 }

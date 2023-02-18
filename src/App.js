@@ -2,7 +2,7 @@ import "./App.css";
 import "./styles/DarkTheme.css"
 import "./styles/LightTheme.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./componenets/pages/Home";
+import Home from "./componenets/pages/Home/Home";
 import Navbar from "./componenets/layout/Navbar/Navbar";
 
 function App() {

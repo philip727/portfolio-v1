@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import React from "react";
-import ThemeButton from "./ThemeButton";
+import ThemeButton from "./ThemeButton/ThemeButton";
 
 interface Page {
     name: string;
@@ -18,10 +18,7 @@ export default function Navbar(props: NavbarProps): JSX.Element {
             <div className="w-1/3 h-full flex justify-start items-center" id="navbar-btn-wrapper">
                 <ThemeButton />
             </div>
-            {/* <Typewriter childClass="navbar-item" childId="navbar-title" text="WEBSITE" msDelay={100} /> */}
-            <h1 className="navbar-mid-item" id="navbar-title">
-                PHILIP
-            </h1>
+            <h1 className="navbar-mid-item text-center h-fit font-semibold" id="navbar-title">PHILIP</h1>
             <div className="w-1/3 h-full">
                 <div id="navbar-link-wrapper" className="h-full flex flex-row justify-end items-center mr-9">
                     {props.pages.map((page, index) => {
