@@ -29,7 +29,7 @@ export default function Home(): JSX.Element {
 
             <section id="languages-section">
                 <div className="flex items-center justify-center w-full">
-                    <CarouselSlider id="carousel-languages-wrapper" className="h-44 relative grid place-items-center overflow-hidden" duration={10} slides={
+                    <CarouselSlider id="carousel-languages-wrapper" className="h-44 relative grid place-items-center overflow-hidden" duration={20} slides={
                         [
                         {
                             name: "C#",
@@ -38,14 +38,32 @@ export default function Home(): JSX.Element {
                             imgClass: imgClass,
                         },
                         {
-                            name: "Rust",
-                            img: "./images/languages/rust.svg",
+                            name: "Python",
+                            img: "./images/languages/python.svg",
                             sClassName: slideClass,
                             imgClass: imgClass,
                         },
                         {
-                            name: "python",
-                            img: "./images/languages/python.svg",
+                            name: "React",
+                            img: "./images/languages/react.svg",
+                            sClassName: slideClass,
+                            imgClass: imgClass,
+                        },
+                        {
+                            name: "Javascript",
+                            img: "./images/languages/javascript.svg",
+                            sClassName: slideClass,
+                            imgClass: imgClass + " rounded-md",
+                        },
+                        {
+                            name: "Typescript",
+                            img: "./images/languages/typescript.svg",
+                            sClassName: slideClass,
+                            imgClass: imgClass + " rounded-md",
+                        },
+                        {
+                            name: "Tailwind CSS",
+                            img: "./images/languages/tailwindcss.svg",
                             sClassName: slideClass,
                             imgClass: imgClass,
                         },
