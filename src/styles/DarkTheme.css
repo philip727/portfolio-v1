@@ -23,11 +23,11 @@
 }
 
 .dark .line-bg::after {
-    background-color: #fffaed;
+    background-color: var(--light-background-color);
 }
 
 .dark .side-line {
-    background-color: var(--dark-highlight-color);
+    background-color: var(--light-background-color);
 }
 
 .dark #theme-button {

@@ -4,26 +4,12 @@
     top: 20vh;
 }
 
-.diagonal {
-    position: relative;
-    isolation: isolate;
-}
-
-.diagonal::after {
-    content: '';
-    background-color: steelblue;
-    position: absolute;
-    z-index: -1;
-    inset: 0;
+.skew-m-5::after {
     transform: skewY(-5deg);
 }
 
-.full-width {
-    width: 100vw;
-}
-
-.thin-line {
-    height: 1.5rem;
+.skew-5::after {
+    transform: skewY(5deg);
 }
 
 #top-line {
@@ -36,63 +22,9 @@
 
 #middle-line {
     top: 21vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-#middle-wrapper {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 1rem 1rem;
-}
 
 #bottom-line {
     top: 22vh;
-}
-
-.line-grad::after {
-    transition: background-image 0.3s;
-}
-
-.line-bg::after {
-    transition: background-color 0.3s;
-}
-
-.big-title {
-    font-size: 2rem;
-}
-
-.sig-paragraph {
-    font-size: 1.5rem;
-}
-
-.centred-paragraph {
-    text-align: center;
-}
-
-.side-line {
-    height: 2px;
-    width: 260px;
-    transition: background-color 0.3s;
-}
-
-#middle-title-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.7rem;
-}
-
-#middle-title-wrapper > h1 {
-    font-weight: 700;
-}
-
-#about-me-paragraph {
-    margin-top: 0.6rem;
-    font-weight: 500;
 }

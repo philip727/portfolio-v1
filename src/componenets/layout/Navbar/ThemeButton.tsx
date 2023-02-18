@@ -23,11 +23,12 @@ export default function ThemeButton() {
     return (
         <motion.div
             id="theme-button"
+            className="flex items-center justify-center ml-2  md:ml-3 lg:ml-5 rounded-md sm:rounded-xl transition-colors duration-300 cursor-pointer px-1.5 sm:px-2 2xl:px-2.5"
             onClick={toggleTheme}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
         >
-            <img src={themeButtonIcon.current} alt="Change Theme Button" />
+            <img className="w-3 h-6 sm:w-4 sm:h-8 md:w-5 md:h-9 lg:w-7 lg:h-11 xl:w-8 xl:h-12 2xl:w-9 2xl:h-14" src={themeButtonIcon.current} alt="Change Theme Button" />
         </motion.div>
     );
 }

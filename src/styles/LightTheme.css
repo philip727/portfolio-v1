@@ -3,7 +3,7 @@
     --light-background-color: #fffaed;
     --light-font-color: #111111;
     --light-shaded-font-color: #5b5b5b;
-    --light-highlight-color: #111111
+    --light-highlight-color: #111111;
 }
 
 .light {
@@ -16,7 +16,7 @@
 }
 
 .light .line-bg::after {
-    background-color: #222222;
+    background-color: var(--dark-background-color);
 }
 
 .light .side-line {
