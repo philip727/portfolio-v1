@@ -3,7 +3,7 @@ import CarouselSlider from "../../layout/CarouselSlider";
 import "./Home.css";
 import MiddleParagraph from "./MiddleParagraph";
 
-const slideClass = "slide-container h-28 flex items-center justify-start p-3 w-56 rounded-2xl border-2"
+const slideClass = "slide-container h-24 flex items-center justify-start p-3 w-56 rounded-2xl border-2 shopify-shadow"
 const imgClass = "h-16 w-16 select-none"
 
 export default function Home(): JSX.Element {

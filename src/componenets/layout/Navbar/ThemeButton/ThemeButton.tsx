@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function ThemeButton() {
     const [theme, setTheme]: [string, Dispatch<SetStateAction<string>>] = useState("dark");
-    const themeButtonIcon = useRef("./images/navbar/sun-icon.svg");
+    const themeButtonIcon = useRef<string>("./images/navbar/sun-icon.svg");
 
     useEffect(() => {
         document.body.className = theme;

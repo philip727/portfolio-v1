@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { motion, AnimatePresence, useAnimation } from "framer-motion";
+import { motion, AnimatePresence, useAnimation, AnimationControls } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const fallDistance = 60;
+const fallDistance: number = 60;
 const transition = {
     type: "spring",
     damping: 12,
@@ -26,7 +26,7 @@ const middleText = {
 };
 
 export default function MiddleParagraph() {
-    const controls = useAnimation();
+    const controls: AnimationControls = useAnimation();
     const [ref, inView] = useInView();
     useEffect(() => {
         if (inView) {

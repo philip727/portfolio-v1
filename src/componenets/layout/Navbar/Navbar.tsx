@@ -16,7 +16,7 @@ export default function Navbar({ pages }: Props): JSX.Element {
     return (
         <div
             id="navbar-wrapper"
-            className="fixed flex justify-between items-center w-screen backdrop-blur-2xl z-50"
+            className="fixed flex justify-between items-center w-screen backdrop-blur-2xl z-50 material-shadow"
         >
             <div
                 className="w-1/3 h-full flex justify-start items-center"

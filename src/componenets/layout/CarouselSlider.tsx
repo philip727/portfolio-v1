@@ -37,8 +37,9 @@ export default function CarouselSlider({ id, className, slides, duration }: Prop
 
 const createSlide = ({ name, img, sClassName, imgClass }: Slide,  index: number): ReactNode => {
     return (
-        <div key={index} className={sClassName}>
+        <motion.div whileHover={{ scale: 1.1 }} key={index} className={sClassName}>
             <img className={imgClass} src={img} />
-        </div>
+            <p className="text-center m-auto font-medium text-lg">{name}</p>
+        </motion.div>
     )
 }
