@@ -22,8 +22,8 @@ const rightLine = {
 
 const middleText = {
     visible: { y: 0, opacity: 1 },
-    hidden: { y: -fallDistance/2, opacity: 0 },
-}
+    hidden: { y: -fallDistance / 2, opacity: 0 },
+};
 
 export default function MiddleParagraph() {
     const controls = useAnimation();
@@ -73,13 +73,11 @@ export default function MiddleParagraph() {
                 >
                     Hello! My name is Philip and I am a 20 year old developer!
                     <br />
-                    I have been programming since 2018 and have developed
+                    I have been programming since 2016 and have developed
                     <br />
                     almost daily since, and still love programming even more
                     <br />
-                    every day. Over the years I have used and learnt many
-                    <br />
-                    languages.
+                    every day.
                 </motion.p>
             </AnimatePresence>
         </div>

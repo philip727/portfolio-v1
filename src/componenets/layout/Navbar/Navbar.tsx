@@ -8,21 +8,35 @@ interface Page {
     link: string;
 }
 
-interface NavbarProps {
+interface Props {
     pages: Array<Page>;
 }
 
-export default function Navbar(props: NavbarProps): JSX.Element {
+export default function Navbar({ pages }: Props): JSX.Element {
     return (
-        <div id="navbar-wrapper" className="fixed flex justify-between items-center w-screen backdrop-blur-2xl z-50">
-            <div className="w-1/3 h-full flex justify-start items-center" id="navbar-btn-wrapper">
+        <div
+            id="navbar-wrapper"
+            className="fixed flex justify-between items-center w-screen backdrop-blur-2xl z-50"
+        >
+            <div
+                className="w-1/3 h-full flex justify-start items-center"
+                id="navbar-btn-wrapper"
+            >
                 <ThemeButton />
             </div>
-            <h1 className="navbar-mid-item text-center h-fit font-semibold" id="navbar-title">PHILIP</h1>
+            <h1
+                className="navbar-mid-item text-center h-fit font-semibold"
+                id="navbar-title"
+            >
+                PHILIP
+            </h1>
             <div className="w-1/3 h-full">
-                <div id="navbar-link-wrapper" className="h-full flex flex-row justify-end items-center mr-9">
-                    {props.pages.map((page, index) => {
-                        return (createNavbarButton(page.name, page.link, index));
+                <div
+                    id="navbar-link-wrapper"
+                    className="h-full flex flex-row justify-end items-center mr-9"
+                >
+                    {pages.map((page, index) => {
+                        return createNavbarButton(page.name, page.link, index);
                     })}
                 </div>
             </div>
@@ -30,9 +44,13 @@ export default function Navbar(props: NavbarProps): JSX.Element {
     );
 }
 
-const createNavbarButton = (name: string, link: string, index: number): JSX.Element => {
+const createNavbarButton = (name: string,link: string,index: number): JSX.Element => {
     return (
-        <NavLink key={index} className="us-link hover-underline normal-txt text-center" to={link}>
+        <NavLink
+            key={index}
+            className="us-link hover-underline normal-txt text-center"
+            to={link}
+        >
             {name}
         </NavLink>
     );

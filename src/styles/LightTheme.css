@@ -11,8 +11,8 @@
     color: var(--light-font-color);
 }
 
-.light .line-grad::after {
-    background-image: linear-gradient(45deg, rgb(98, 243, 224), #29bf9c, #e745c1, #c327ea);
+.line-grad::after {
+    background-image: linear-gradient(45deg, #87f9c9, #5ec59a, #69d7a9, #20f99f);
 }
 
 .light .line-bg::after {
@@ -30,4 +30,8 @@
 
 .light #theme-button img {
     filter: invert(84%) sepia(5%) saturate(1314%) hue-rotate(323deg) brightness(109%) contrast(125%);
+}
+
+.light .shadow-line::after {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0px, rgbrgba(0, 0, 0, 0.15)x 2px 6px 2px;
 }

@@ -1,17 +1,17 @@
-.skew-m-5::after {
-    transform: skewY(-5deg);
+body {
+    overflow-x: hidden;
 }
 
-.skew-5::after {
-    transform: skewY(5deg);
+#introduction-section {
+    height: 56rem;
+}
+
+#languages-section {
+    height: 30rem;
 }
 
 #top-line {
     top: 10rem;
-}
-
-.mega-thick-line {
-    height: 35rem;
 }
 
 #middle-line {
@@ -21,4 +21,13 @@
 
 #bottom-line {
     top: 11rem;
+}
+
+#carousel-languages-wrapper {
+    top: 0rem;
+}
+
+.slide-container {
+    background-color: rgb(29, 29, 29);
+    border-color: #4d4d4d;
 }
