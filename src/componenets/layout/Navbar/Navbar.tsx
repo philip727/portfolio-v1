@@ -16,7 +16,7 @@ export default function Navbar({ pages }: Props): JSX.Element {
     return (
         <div
             id="navbar-wrapper"
-            className="fixed flex justify-between items-center w-screen backdrop-blur-2xl z-50 material-shadow"
+            className="fixed flex justify-between items-center w-screen backdrop-blur-2xl z-50 material-shadow h-12 sm:h-16"
         >
             <div
                 className="w-1/3 h-full flex justify-start items-center"
@@ -25,7 +25,7 @@ export default function Navbar({ pages }: Props): JSX.Element {
                 <ThemeButton />
             </div>
             <h1
-                className="navbar-mid-item text-center h-fit font-semibold"
+                className="navbar-mid-item text-center h-fit font-semibold text-4xl flex justify-center items-center"
                 id="navbar-title"
             >
                 PHILIP
@@ -33,7 +33,7 @@ export default function Navbar({ pages }: Props): JSX.Element {
             <div className="w-1/3 h-full">
                 <div
                     id="navbar-link-wrapper"
-                    className="h-full flex flex-row justify-end items-center mr-9"
+                    className="h-full flex flex-row justify-end items-center mr-9 gap-7 invisible lg:visible"
                 >
                     {pages.map((page, index) => {
                         return createNavbarButton(page.name, page.link, index);
@@ -48,7 +48,7 @@ const createNavbarButton = (name: string,link: string,index: number): JSX.Elemen
     return (
         <NavLink
             key={index}
-            className="us-link hover-underline normal-txt text-center"
+            className="us-link hover-underline normal-txt text-center text-xl"
             to={link}
         >
             {name}

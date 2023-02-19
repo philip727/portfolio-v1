@@ -45,5 +45,5 @@
 
 .dark .mask-grad::before,
 .dark .mask-grad::after {
-    background-image: linear-gradient(to right, #222222 0%, #22222299 20%, #22222200 100%);
+    background: linear-gradient(to right, #222222 0%, #22222299 20%, #22222200 100%);
 }

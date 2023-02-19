@@ -44,7 +44,7 @@ export default function MiddleParagraph() {
                         animate={controls}
                         variants={leftLine}
                         transition={transition}
-                        className="side-line h-px sm:h-0.5 mp:w-24 bp:w-32 sm:w-40 md:w-48 lg:w-52 transition-colors duration-300"
+                        className="side-line h-px sm:h-0.5 mp:w-16 bp:w-28 sm:w-34 md:w-40 lg:w-52 transition-colors duration-300"
                     />
                     <motion.h1
                         ref={ref}
@@ -62,7 +62,7 @@ export default function MiddleParagraph() {
                         animate={controls}
                         variants={rightLine}
                         transition={transition}
-                        className="side-line h-px sm:h-0.5 mp:w-24 bp:w-32 sm:w-40 md:w-48 lg:w-52 transition-colors duration-300"
+                        className="side-line h-px sm:h-0.5 mp:w-16 bp:w-28 sm:w-34 md:w-40 lg:w-52 transition-colors duration-300"
                     />
                 </div>
                 <motion.p
@@ -70,14 +70,11 @@ export default function MiddleParagraph() {
                     animate={{ opacity: 1 }}
                     id="about-me-paragraph"
                     key={2}
-                    className="text-center text-xs bp:text-sm sm:text-lg md:text-xl lg:text-2xl mt-0 md:mt-1 font-medium"
+                    className="text-center text-xs bp:text-sm sm:text-lg md:text-xl lg:text-2xl mt-0 md:mt-1 font-medium w-3/4 2xl:w-1/2 3xl:w-1/3"
                 >
                     Hello! My name is Philip and I am a 20 year old developer!
-                    <br />
                     I have been programming since 2016 and have developed
-                    <br />
                     almost daily since, and still love programming even more
-                    <br />
                     every day.
                 </motion.p>
             </AnimatePresence>

@@ -31,6 +31,9 @@ export default function Home(): JSX.Element {
 
 
             <section id="languages-section">
+                <div>
+
+                </div>
                 <div className="flex items-center justify-center w-full">
                     <CarouselSlider id="carousel-languages-wrapper" className="h-44 relative grid place-items-center overflow-hidden mask-grad after:contents[''] before:contents[''] before:transition-all 
                         before:duration-300 after:transition-all after:duration-300 max-w-60-screen after:h-full before:h-full after:absolute before:absolute" duration={20} slides={
