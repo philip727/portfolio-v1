@@ -44,3 +44,8 @@
 .light .mask-grad::after {
     background: linear-gradient(to right, #fffaed 0%, #fffaed99 20%, #fffaed00 100%);
 }
+
+.light .slide-container {
+    background-color: rgb(226, 226, 226);
+    border-color: #1f1f1f;
+}

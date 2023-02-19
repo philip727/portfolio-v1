@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence, useAnimation, AnimationControls } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -7,7 +8,7 @@ const transition = {
     type: "spring",
     damping: 12,
     stiffness: 90,
-    duration: 0.2,
+    duration: 0.3,
 };
 
 const leftLine = {
@@ -25,7 +26,12 @@ const middleText = {
     hidden: { y: -fallDistance / 2, opacity: 0 },
 };
 
-export default function MiddleParagraph() {
+const paraText = {
+    visible: { y: 0, opacity: 1 },
+    hidden: { y: -fallDistance, opacity: 0 },
+};
+
+export default function AboutMe() {
     const controls: AnimationControls = useAnimation();
     const [ref, inView] = useInView();
     useEffect(() => {
@@ -66,16 +72,19 @@ export default function MiddleParagraph() {
                     />
                 </div>
                 <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    ref={ref}
+                    initial={"hidden"}
+                    animate={controls}
+                    variants={paraText}
+                    transition={transition}
                     id="about-me-paragraph"
                     key={2}
                     className="text-center text-xs bp:text-sm sm:text-lg md:text-xl lg:text-2xl mt-0 md:mt-1 font-medium w-3/4 2xl:w-1/2 3xl:w-1/3"
                 >
-                    Hello! My name is Philip and I am a 20 year old developer!
-                    I have been programming since 2016 and have developed
-                    almost daily since, and still love programming even more
-                    every day.
+                    Hi! I am Philip. A 20-year-old developer from the UK, I have been developing since 
+                    I was 15-years-old, first starting with lua & python. Since then, I have
+                    delved into many languages, and to this day I still enjoy making fun, interactive 
+                    things with <NavLink id="code-write-link" className="hover-underline highlight-text font-semibold" to={"/projects"}>the code I write</NavLink>.
                 </motion.p>
             </AnimatePresence>
         </div>

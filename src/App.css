@@ -1,3 +1,13 @@
+/* 
+Bright: #32f1a2
+Dark: #2a9c6a
+*/
+
+html {
+    scroll-behavior: smooth;
+}
+
+
 body {
     transition: background-color 0.3s;
 }
@@ -11,11 +21,30 @@ body {
     font-weight: 600;
 }
 
+
 .active {
     background-image: linear-gradient(
         -225deg,
         #19e2a3 0%,
         #1d9d9f 29%,
+        #ef6895 67%,
+        #a76dd4 100%
+    );
+    background-size: auto auto;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+}
+
+.highlight-text {
+    background-image: linear-gradient(
+        -225deg,
+        #b980ff 0%,
+        #f97ed6 29%,
         #ef6895 67%,
         #a76dd4 100%
     );
@@ -74,12 +103,20 @@ body {
     max-width: 2rem;
 }
 
-.max-w-60-screen {
-    max-width: 60vw;
+
+
+.max-w-slider {
+    max-width: 90vw;
 }
 
 @keyframes textclip {
     to {
         background-position: 200% center;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .max-w-slider {
+        max-width: 60vw;
     }
 }

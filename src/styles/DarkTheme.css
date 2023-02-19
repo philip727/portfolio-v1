@@ -47,3 +47,8 @@
 .dark .mask-grad::after {
     background: linear-gradient(to right, #222222 0%, #22222299 20%, #22222200 100%);
 }
+
+.dark .slide-container {
+    background-color: rgb(29, 29, 29);
+    border-color: #4d4d4d;
+}
