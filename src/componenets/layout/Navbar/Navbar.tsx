@@ -25,7 +25,7 @@ export default function Navbar({ pages }: Props): JSX.Element {
                 <ThemeButton />
             </div>
             <h1
-                className="navbar-mid-item text-center h-fit font-semibold text-4xl flex justify-center items-center"
+                className="navbar-mid-item text-center h-fit font-semibold text-4xl flex justify-center items-center tracking-wider"
                 id="navbar-title"
             >
                 PHILIP

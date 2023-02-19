@@ -50,7 +50,7 @@ export default function AboutMe() {
                         animate={controls}
                         variants={leftLine}
                         transition={transition}
-                        className="side-line h-px sm:h-0.5 mp:w-16 bp:w-28 sm:w-34 md:w-40 lg:w-52 transition-colors duration-300"
+                        className="side-line h-0.5 w-16 bp:w-24 sm:w-34 md:w-40 lg:w-52 transition-colors duration-300"
                     />
                     <motion.h1
                         ref={ref}
@@ -58,7 +58,7 @@ export default function AboutMe() {
                         animate={controls}
                         variants={middleText}
                         transition={transition}
-                        className="sm:text-xl md:text-3xl lg:text-4xl text-lg font-bold"
+                        className="text-xl md:text-3xl lg:text-4xl font-bold"
                     >
                         ABOUT ME
                     </motion.h1>
@@ -68,7 +68,7 @@ export default function AboutMe() {
                         animate={controls}
                         variants={rightLine}
                         transition={transition}
-                        className="side-line h-px sm:h-0.5 mp:w-16 bp:w-28 sm:w-34 md:w-40 lg:w-52 transition-colors duration-300"
+                        className="side-line h-0.5 w-16 bp:w-24 sm:w-34 md:w-40 lg:w-52 transition-colors duration-300"
                     />
                 </div>
                 <motion.p
@@ -79,7 +79,7 @@ export default function AboutMe() {
                     transition={transition}
                     id="about-me-paragraph"
                     key={2}
-                    className="text-center text-xs bp:text-sm sm:text-lg md:text-xl lg:text-2xl mt-0 md:mt-1 font-medium w-3/4 2xl:w-1/2 3xl:w-1/3"
+                    className="text-center text-sm sm:text-lg md:text-xl lg:text-2xl mt-0 md:mt-1 font-medium w-3/4 2xl:w-1/2 3xl:w-1/3"
                 >
                     Hi! I am Philip. A 20-year-old developer from the UK, I have been developing since 
                     I was 15-years-old, first starting with lua & python. Since then, I have

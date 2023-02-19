@@ -40,6 +40,11 @@ body {
     display: inline-block;
 }
 
+.line-grad::after {
+    background-image: linear-gradient(45deg, #87f9c9, #5ec59a, #69d7a9, #20f99f);
+}
+
+
 .highlight-text {
     background-image: linear-gradient(
         -225deg,
