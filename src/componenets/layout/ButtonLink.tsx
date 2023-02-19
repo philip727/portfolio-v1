@@ -1,16 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-interface ButtonLinkProps {
-    buttonClass?: string;
+interface Props {
+    className?: string;
     text: string;
     to: string;
 }
 
-export default function ButtonLink(props: ButtonLinkProps): JSX.Element {
+export default function ButtonLink({ className, text, to}: Props): JSX.Element {
     return (
-        <NavLink to={props.to}>
-            <div className={props.buttonClass}>{props.text}</div>
+        <NavLink to={to}>
+            <div className={className}>{text}</div>
         </NavLink>
     );
 }

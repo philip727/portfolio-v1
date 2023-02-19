@@ -1,6 +1,7 @@
 import React, { Children, ReactNode } from "react";
 import { motion } from 'framer-motion'
-import Tooltip from "../features/Tooltip";
+import Tooltip from "../../features/Tooltip";
+import './CarouselSlider.css'
 
 
 interface Slide {
@@ -22,7 +23,7 @@ export default function CarouselSlider({ id, className, slides, duration }: Prop
     return (
         <div id={id} className={className} style={{width: `${14*slides.length}rem`}}>
             <motion.div 
-                animate={{ x: '-50.53%' }}
+                animate={{ x: '-50%' }}
                 transition={{ duration: duration == null ? 3 : duration, repeat: Infinity, ease: "linear"}}
                 className="flex w-fit gap-4">
                 {slides.map((value, index) => {
@@ -39,8 +40,8 @@ export default function CarouselSlider({ id, className, slides, duration }: Prop
 
 const createSlide = ({ name, img, sClassName, imgClass, tooltip }: Slide,  index: number): ReactNode => {
     return (
-        <Tooltip text={tooltip}>
-            <motion.div whileHover={{ scale: 1.1 }} key={index} className={sClassName}>
+        <Tooltip key={index} text={tooltip}>
+            <motion.div whileHover={{ scale: 1.1 }} className={sClassName}>
                 <img className={imgClass} src={img} />
                 <p className="text-center m-auto font-medium text-lg">{name}</p>
             </motion.div>

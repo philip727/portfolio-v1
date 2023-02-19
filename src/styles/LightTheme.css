@@ -33,5 +33,14 @@
 }
 
 .light .shadow-line::after {
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0px, rgbrgba(0, 0, 0, 0.15)x 2px 6px 2px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px 0px, rgba(0, 0, 0, 0.15) 2px 6px 2px;
+}
+
+.light #navbar-wrapper  {
+    background-color: #fffaedd8;
+}
+
+.light .mask-grad::before,
+.light .mask-grad::after {
+    background-image: linear-gradient(to right, #fffaed 0%, #fffaed99 20%, #fffaed00 100%);
 }

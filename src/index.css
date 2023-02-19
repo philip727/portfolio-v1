@@ -31,3 +31,14 @@ h1 {
 p {
     transition: color 0.3s;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #2a9c6a;
+    border-radius: 5rem;
+}

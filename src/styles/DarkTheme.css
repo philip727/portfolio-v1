@@ -38,3 +38,12 @@
 .dark .shadow-line::after {
     box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 2px 0px, rgba(255, 255, 255, 0.15) 0px 2px 6px 2px;
 }
+
+.dark #navbar-wrapper  {
+    background-color: #222222d8
+}
+
+.dark .mask-grad::before,
+.dark .mask-grad::after {
+    background-image: linear-gradient(to right, #222222 0%, #22222299 20%, #22222200 100%);
+}

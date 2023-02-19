@@ -37,7 +37,7 @@ export default function MiddleParagraph() {
     return (
         <div className="h-full w-full flex justify-center items-center flex-col m-4">
             <AnimatePresence>
-                <div className="flex justify-center items-center gap-2 lg:gap-6 sm:gap-4">
+                <div key={1} className="flex justify-center items-center gap-2 lg:gap-6 sm:gap-4">
                     <motion.span
                         ref={ref}
                         initial="hidden"
@@ -69,6 +69,7 @@ export default function MiddleParagraph() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     id="about-me-paragraph"
+                    key={2}
                     className="text-center text-xs bp:text-sm sm:text-lg md:text-xl lg:text-2xl mt-0 md:mt-1 font-medium"
                 >
                     Hello! My name is Philip and I am a 20 year old developer!

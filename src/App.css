@@ -74,6 +74,10 @@ body {
     max-width: 2rem;
 }
 
+.max-w-60-screen {
+    max-width: 60vw;
+}
+
 @keyframes textclip {
     to {
         background-position: 200% center;

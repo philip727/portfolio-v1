@@ -1,0 +1,16 @@
+.mask-grad::before,
+.mask-grad::after {
+    width: 5%;
+    z-index: 100;
+}
+
+.mask-grad::before {
+    left: 0;
+    top: 0;
+}
+
+.mask-grad::after {
+    right: -1px;
+    top:0;
+    transform: rotateZ(180deg);
+}
