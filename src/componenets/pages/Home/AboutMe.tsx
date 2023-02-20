@@ -43,7 +43,7 @@ export default function AboutMe() {
     return (
         <div className="h-full w-full flex justify-center items-center flex-col m-4">
             <AnimatePresence>
-                <div key={1} className="flex justify-center items-center gap-2 lg:gap-6 sm:gap-4">
+                {/* <div key={1} className="flex justify-center items-center gap-2 lg:gap-6 sm:gap-4">
                     <motion.span
                         ref={ref}
                         initial="hidden"
@@ -70,7 +70,7 @@ export default function AboutMe() {
                         transition={transition}
                         className="side-line h-0.5 w-16 bp:w-24 sm:w-34 md:w-40 lg:w-52 transition-colors duration-300"
                     />
-                </div>
+                </div> */}
                 <motion.p
                     ref={ref}
                     initial={"hidden"}
@@ -79,7 +79,7 @@ export default function AboutMe() {
                     transition={transition}
                     id="about-me-paragraph"
                     key={2}
-                    className="text-center text-sm sm:text-lg md:text-xl lg:text-2xl mt-0 md:mt-1 font-medium w-3/4 2xl:w-1/2 3xl:w-1/3"
+                    className="text-center text-sm mp:text-base sm:text-lg md:text-xl lg:text-2xl mt-0 md:mt-1 font-medium w-3/4 2xl:w-1/2 3xl:w-1/3"
                 >
                     Hi! I am Philip. A 20-year-old developer from the UK, I have been developing since 
                     I was 15-years-old, first starting with lua & python. Since then, I have
