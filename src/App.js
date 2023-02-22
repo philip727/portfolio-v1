@@ -1,40 +1,32 @@
+// CSS
 import "./App.css";
 import "./styles/DarkTheme.css"
 import "./styles/LightTheme.css"
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// React
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
+
+// Pages
 import Home from "./componenets/pages/Home/Home";
+import Projects from "./componenets/pages/Projects/Projects"
+
+// Layouts
 import Navbar from "./componenets/layout/Navbar/Navbar";
+import RootLayout from "./componenets/layout/RootLayout"
+
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" element={<RootLayout />}>
+            <Route index element={<Home />} />
+            <Route path="projects" element={<Projects />} />
+        </Route>
+    )
+)
+
 
 function App() {
-    return( 
-        <BrowserRouter>
-            <header>
-                <Navbar pages={[
-                    {
-                        name: "Home", 
-                        link: "/"
-                    },
-                    {
-                        name: "Projects",
-                        link: "/projects"
-                    },
-                    {
-                        name: "Blog",
-                        link: "/blog"
-                    },
-                    {
-                        name: "Contact",
-                        link: "/contact"
-                    },
-                    ]} />
-            </header>
-            <main>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    {/* <Route path="/blogs" element={<Blog />} /> */}
-                </Routes>
-            </main>
-        </BrowserRouter>
+    return(        
+        <RouterProvider router={router} />
     );
 }
 

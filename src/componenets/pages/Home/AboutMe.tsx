@@ -1,7 +1,17 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { motion, AnimatePresence, useAnimation, AnimationControls } from "framer-motion";
+import {
+    motion,
+    AnimatePresence,
+    useAnimation,
+    AnimationControls,
+} from "framer-motion";
 import { useInView } from "react-intersection-observer";
+
+// Hi! I am Philip. A 20-year-old developer from the UK, I have been developing since
+// I was 15-years-old, first starting with lua & python. Since then, I have
+// delved into many languages, and to this day I still enjoy making fun, interactive
+// things with
 
 const fallDistance: number = 60;
 const transition = {
@@ -81,10 +91,17 @@ export default function AboutMe() {
                     key={2}
                     className="text-center text-sm mp:text-base sm:text-lg md:text-xl lg:text-2xl mt-0 md:mt-1 font-medium w-3/4 2xl:w-1/2 3xl:w-1/3"
                 >
-                    Hi! I am Philip. A 20-year-old developer from the UK, I have been developing since 
-                    I was 15-years-old, first starting with lua & python. Since then, I have
-                    delved into many languages, and to this day I still enjoy making fun, interactive 
-                    things with <NavLink id="code-write-link" className="hover-underline highlight-text font-semibold" to={"/projects"}>the code I write</NavLink>.
+                    Hi! Im Philip, A 20 year-old developer from the UK! And I
+                    like to write{" "}
+                    <NavLink
+                        id="code-write-link"
+                        className="hover-underline highlight-text font-semibold"
+                        to={"/projects"}
+                    >
+                        fun things with code
+                    </NavLink>
+                    . I have been developing since I was 15 years-old and have
+                    coded (almost)daily since!
                 </motion.p>
             </AnimatePresence>
         </div>
