@@ -4,23 +4,24 @@ body {
 
 #introduction-section {
     height: 56rem;
+    
+    #top-line {
+        top: 15rem;
+    }
+    
+    #middle-line {
+        top: 15.5rem;
+    }
+    
+    #bottom-line {
+        top: 16rem;
+    }
 }
 
 #languages-section {
     height: 22rem;
 }
 
-#top-line {
-    top: 15rem;
-}
-
-#middle-line {
-    top: 15.5rem;
-}
-
-#bottom-line {
-    top: 16rem;
-}
 
 .shopify-shadow {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;

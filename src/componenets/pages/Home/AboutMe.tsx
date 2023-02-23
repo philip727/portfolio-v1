@@ -98,9 +98,9 @@ export default function AboutMe() {
                         className="hover-underline highlight-text font-semibold"
                         to={"/projects"}
                     >
-                        fun things with code
+                        fun things
                     </NavLink>
-                    . I have been developing since I was 15 years-old and have
+                    &nbsp;with code. I have been developing since I was 15 years-old and have
                     coded (almost)daily since!
                 </motion.p>
             </AnimatePresence>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.css";
+import "./Home.scss";
 import AboutMe from "./AboutMe";
 import RecentTechsTitle from "./RecentTechsTitle";
 import RecentTechsScroller from "./RecentTechsScroller";

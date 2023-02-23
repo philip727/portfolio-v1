@@ -33,7 +33,7 @@ export default function Navbar({ pages }: Props): JSX.Element {
             <div className="w-1/3 h-full">
                 <div
                     id="navbar-link-wrapper"
-                    className="h-full flex flex-row justify-end items-center gap-7 mr-9 invisible xl:visible w-full"
+                    className="h-full flex flex-row justify-center items-center gap-3 2xl:gap-7 mr-9 invisible xl:visible w-full"
                 >
                     {pages.map((page, index) => {
                         return createNavbarButton(page.name, page.link, index);
