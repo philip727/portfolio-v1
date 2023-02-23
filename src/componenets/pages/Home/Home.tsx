@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.scss";
-import AboutMe from "./AboutMe";
+import AboutMe from "./Introduction";
 import RecentTechsTitle from "./RecentTechsTitle";
 import RecentTechsScroller from "./RecentTechsScroller";
 

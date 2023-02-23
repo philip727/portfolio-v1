@@ -13,7 +13,7 @@ import { useInView } from "react-intersection-observer";
 // delved into many languages, and to this day I still enjoy making fun, interactive
 // things with
 
-const fallDistance: number = 60;
+const fallDistance: number = 20;
 const transition = {
     type: "spring",
     damping: 12,
@@ -37,8 +37,8 @@ const middleText = {
 };
 
 const paraText = {
-    visible: { y: 0, opacity: 1 },
-    hidden: { y: -fallDistance, opacity: 0 },
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
 };
 
 export default function AboutMe() {

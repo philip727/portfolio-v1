@@ -14,7 +14,7 @@ export default function NotFound() {
                 transition={{duration: 0.3}}
                 className="flex justify-center relative w-full"
             >
-                <div className="flex flex-col bp:items-start justify-center">
+                <div className="flex flex-col bp:items-start justify-center m-6">
                     <div className="flex flex-row justify-center items-center">
                         <h1 className="text-center bp:text-left w-fit text-7xl font-bold">
                             404
