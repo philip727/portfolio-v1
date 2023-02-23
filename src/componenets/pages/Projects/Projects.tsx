@@ -7,11 +7,12 @@ interface Project {
     id: number;
     description: string;
     image: string;
+    index: number;
 }
 
-const ProjectsArray: Array<Project> = [
+const ProjectsArray = [
     {
-        name: "Untitled Game",
+        name: "Tanzia",
         id: 1,
         description: "Game made in C#",
         image: "./images/project/projects/world-gen-preview.png",
@@ -39,6 +40,7 @@ export default function Projects() {
                     id={project.id}
                     image={project.image}
                     key={index}
+                    index={index}
                 />
             ))}
         </div>
