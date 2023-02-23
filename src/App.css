@@ -132,3 +132,7 @@ body {
         max-width: 60vw;
     }
 }
+
+.bright-text {
+    color: #32f1a2;
+}
