@@ -9,6 +9,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s;
 }
 
 code {
@@ -18,10 +19,6 @@ code {
 
 body * {
     margin: 0 0 0 0;
-}
-
-body {
-    transition: background-color 0.3s;
 }
 
 h1 {

@@ -1,19 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import {
     motion,
     AnimatePresence,
-    useAnimation,
-    AnimationControls,
 } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 
 // Hi! I am Philip. A 20-year-old developer from the UK, I have been developing since
 // I was 15-years-old, first starting with lua & python. Since then, I have
 // delved into many languages, and to this day I still enjoy making fun, interactive
 // things with
 
-const fallDistance: number = 20;
 const transition = {
     type: "spring",
     damping: 12,
@@ -21,89 +17,72 @@ const transition = {
     duration: 0.3,
 };
 
-const leftLine = {
+const hiText = {
     visible: { x: 0, opacity: 1 },
-    hidden: { x: -fallDistance, opacity: 0 },
+    hidden: { x: 60, opacity: 0 },
 };
 
-const rightLine = {
+const nameText = {
     visible: { x: 0, opacity: 1 },
-    hidden: { x: fallDistance, opacity: 0 },
-};
-
-const middleText = {
-    visible: { y: 0, opacity: 1 },
-    hidden: { y: -fallDistance / 2, opacity: 0 },
+    hidden: { x: 90, opacity: 0 },
 };
 
 const paraText = {
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 },
+    visible: { x: 0, opacity: 1 },
+    hidden: { x: 120, opacity: 0 },
 };
 
 export default function AboutMe() {
-    const controls: AnimationControls = useAnimation();
-    const [ref, inView] = useInView();
-    useEffect(() => {
-        if (inView) {
-            controls.start("visible");
-        }
-    }, [inView]);
+    const scrollRef = useRef(null)
 
     return (
-        <div className="h-full w-full flex justify-center items-center flex-col m-4">
-            <AnimatePresence>
-                {/* <div key={1} className="flex justify-center items-center gap-2 lg:gap-6 sm:gap-4">
-                    <motion.span
-                        ref={ref}
+        <div className="h-full w-full flex justify-start items-center flex-col">
+            <div ref={scrollRef} className="max-w-slider w-full mt-56">
+                <AnimatePresence>
+                    <motion.h2 
+                        variants={hiText}
                         initial="hidden"
-                        animate={controls}
-                        variants={leftLine}
+                        whileInView="visible"
                         transition={transition}
-                        className="side-line h-0.5 w-16 bp:w-24 sm:w-34 md:w-40 lg:w-52 transition-colors duration-300"
-                    />
+                        viewport={{ once: true }}
+                        key={1}
+                        className="text-left text-3xl bp:text-4xl font-semibold w-full bright-text"
+                    >
+                        Hey There! 👋
+                    </motion.h2>
                     <motion.h1
-                        ref={ref}
+                        variants={nameText}
                         initial="hidden"
-                        animate={controls}
-                        variants={middleText}
+                        whileInView="visible"
                         transition={transition}
-                        className="text-xl md:text-3xl lg:text-4xl font-bold"
-                    >
-                        ABOUT ME
+                        viewport={{ once: true }}
+                        key={2}
+                        className="text-6xl bp:text-7xl mt-2 font-bold w-full">
+                        I'm Philip
                     </motion.h1>
-                    <motion.span
-                        ref={ref}
+                    <motion.p
+                        variants={paraText}
                         initial="hidden"
-                        animate={controls}
-                        variants={rightLine}
+                        whileInView="visible"
                         transition={transition}
-                        className="side-line h-0.5 w-16 bp:w-24 sm:w-34 md:w-40 lg:w-52 transition-colors duration-300"
-                    />
-                </div> */}
-                <motion.p
-                    ref={ref}
-                    initial={"hidden"}
-                    animate={controls}
-                    variants={paraText}
-                    transition={transition}
-                    id="about-me-paragraph"
-                    key={2}
-                    className="text-center text-sm mp:text-base sm:text-lg md:text-xl lg:text-2xl mt-0 md:mt-1 font-medium w-3/4 2xl:w-1/2 3xl:w-1/3"
-                >
-                    Hi! Im Philip, A 20 year-old developer from the UK! And I
-                    like to write{" "}
-                    <NavLink
-                        id="code-write-link"
-                        className="hover-underline highlight-text font-semibold"
-                        to={"/projects"}
+                        viewport={{ once: true }}
+                        id="about-me-paragraph"
+                        key={3}
+                        className="text-left text-3xl bp:text-4xl w-intro-text break-words mt-3"
                     >
-                        fun things
-                    </NavLink>
-                    &nbsp;with code. I have been developing since I was 15 years-old and have
-                    coded (almost)daily since!
-                </motion.p>
-            </AnimatePresence>
+                        I'm A 20 year-old developer from the UK with a passion
+                        to write {" "}
+                        <NavLink
+                            id="code-write-link"
+                            className="hover-underline highlight-text font-semibold"
+                            to={"/projects"}
+                        >
+                            fun things
+                        </NavLink> {" "}
+                        with code.
+                    </motion.p>
+                </AnimatePresence>
+            </div>
         </div>
     );
 }

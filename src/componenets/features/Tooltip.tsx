@@ -4,10 +4,9 @@ import { motion } from "framer-motion";
 interface Props {
     children: ReactNode;
     text?: string;
-    childKey?: number
 }
 
-export default function Tooltip({ children, text, childKey }: Props) {
+export default function Tooltip({ children, text }: Props) {
     const tooltipRef = useRef<HTMLSpanElement>(null);
     const divRef = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false)
@@ -16,14 +15,6 @@ export default function Tooltip({ children, text, childKey }: Props) {
         <div
             className="flex justify-center"
         >
-            <motion.span
-                initial={{ opacity: 0}}
-                animate={{ opacity: isHovered ? 1 : 0 }}
-                ref={tooltipRef}
-                className="whitespace-nowrap h-fit w-fit absolute z-50 text-center break-normal cursor-default select-none"
-            >
-                {text}
-            </motion.span>
             <motion.div
                 ref={divRef}
                 onHoverStart={() => {
@@ -35,7 +26,16 @@ export default function Tooltip({ children, text, childKey }: Props) {
                     if (!tooltipRef.current) return;
                     setIsHovered(false);
                 }}
+                className="flex justify-center"
             >
+                <motion.span
+                    initial={{ opacity: 0}}
+                    animate={{ opacity: isHovered ? 1 : 0 }}
+                    ref={tooltipRef}
+                    className="whitespace-nowrap h-fit w-fit absolute z-50 text-center break-normal cursor-default select-none"
+                >
+                    {text}
+                </motion.span>
                 {children}
             </motion.div>
         </div>

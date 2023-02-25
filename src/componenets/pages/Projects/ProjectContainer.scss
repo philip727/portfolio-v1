@@ -1,7 +1,17 @@
 .w-a-lot {
-    width: 36rem;
+    width: 90vw;
 }
 
 .w-96p {
     width: 96%;
+}
+
+@media only screen and (min-width: 768px) {
+    .w-a-lot {
+        width: 36rem;
+    }
+}
+
+.grayscale-20 {
+    filter: grayscale(20%);
 }

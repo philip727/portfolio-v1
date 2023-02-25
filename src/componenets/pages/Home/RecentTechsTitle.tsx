@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import { motion, AnimatePresence, useAnimation, AnimationControls} from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import React, { useRef } from "react";
+import { AnimatePresence, motion, } from "framer-motion";
 
 const transition = {
     type: "spring",
@@ -15,38 +14,36 @@ const slideIn = {
 }
 
 export default function RecentTechsTitle() {
-    const controls: AnimationControls = useAnimation();
-    const [ref, inView] = useInView();
-    useEffect(() => {
-        if (inView) {
-            controls.start("visible");
-        }
-    }, [inView]);
-
+    const scrollRef = useRef(null)
     return (
         <div className="flex justify-center items-center">
-            <div 
+            <div
+                ref={scrollRef} 
                 className="flex justify-center items-end w-full max-w-slider flex-col"
             >
-                <motion.h1 
-                    ref={ref}
-                    initial="hidden"
-                    animate={controls}
-                    variants={slideIn}
-                    transition={transition}
-                    className="font-bold text-right text-5xl">RECENT TECHS
-                </motion.h1>
-                <motion.p 
-                    ref={ref}
-                    initial="hidden"
-                    animate={controls}
-                    variants={ {...slideIn, hidden: { x: -120, opacity: 0 } }}
-                    transition={transition}
-                    className="text-right font-light text-lg"
-                >
-                    These are the frameworks, languages and tools I have been
-                    using the most recently
-                </motion.p>
+                <AnimatePresence>
+                    <motion.h1
+                        variants={slideIn}
+                        initial="hidden"
+                        whileInView="visible"
+                        transition={transition}
+                        viewport={{ once: true }}
+                        key={0}
+                        className="font-bold text-right text-5xl">RECENT TECHS
+                    </motion.h1>
+                    <motion.p 
+                        variants={ {...slideIn, hidden: { x: -120, opacity: 0 } }}
+                        initial="hidden"
+                        whileInView="visible"
+                        transition={transition}
+                        viewport={{ once: true }}
+                        key={1}
+                        className="text-right font-light text-lg"
+                    >
+                        These are the frameworks, languages and tools I have been
+                        using the most recently
+                    </motion.p>
+                </AnimatePresence>
             </div>
         </div>
     );

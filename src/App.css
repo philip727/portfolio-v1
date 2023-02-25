@@ -41,7 +41,7 @@ body {
 }
 
 .line-grad::after {
-    background-image: linear-gradient(45deg, #87f9c9, #5ec59a, #69d7a9, #20f99f);
+    background-image: linear-gradient(45deg, rgb(29, 29, 29), rgb(31, 31, 31), rgb(34, 34, 34), rgb(38, 38, 38));
 }
 
 
@@ -104,10 +104,13 @@ body {
 }
 
 .clamp-w-tooltip {
-    width: clamp(fit-content, fit-content 3rem);
+    width: clamp(fit-content, fit-content, 3rem);
     max-width: 2rem;
 }
 
+.w-intro-text {
+    width: 100%;
+}
 
 .max-w-slider {
     max-width: 90vw;
@@ -127,9 +130,15 @@ body {
     }
 }
 
-@media screen and (min-width: 1280px) {
+@media only screen and (min-width: 1280px) {
     .max-w-slider {
         max-width: 60vw;
+    }
+}
+
+@media only screen and (min-width: 640px) {
+    .w-intro-text {
+        width: 36rem;
     }
 }
 
