@@ -56,14 +56,16 @@ $light-highlight-color: #111111;
             background: linear-gradient(to right, #222222 0%, #22222299 20%, #22222200 100%);
         }
     }
-    
-    .slide-container {
-        background-color: rgb(29, 29, 29);
+
+    .styled-border {
         border-color: #4d4d4d;
     }
 
-    .project-container {
+    .styled-background {
         background-color: rgb(29, 29, 29);
-        border-color: #4d4d4d;
+    }
+
+    .code-background {
+        background-color: #1e1e1e;
     }
 }

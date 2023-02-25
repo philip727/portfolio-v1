@@ -1,7 +1,7 @@
 import React from "react";
 import "./ProjectContainer.scss";
 import ProjectContainer from "./ProjectContainer";
-import Tooltip from "../../features/Tooltip";
+import Tooltip from "../../extras/Tooltip";
 
 type Project = {
     name: string;

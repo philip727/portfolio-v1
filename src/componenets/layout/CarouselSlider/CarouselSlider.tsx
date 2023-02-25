@@ -1,7 +1,7 @@
 import React, { Children, ReactNode } from "react";
 import { motion } from 'framer-motion'
-import Tooltip from "../../features/Tooltip";
-import './CarouselSlider.css'
+import Tooltip from "../../extras/Tooltip";
+import './CarouselSlider.scss'
 
 
 interface Slide {

@@ -40,9 +40,19 @@ export default function SurvivalGame() {
                         A 16-bit infinitely generated survival game made in
                         unity.
                     </p>
-                    <pre className="h-80 overflow-hidden w-120">
-                        <code className="language-csharp overflow-scroll h-full">{inventoryMarkdown}</code>
-                    </pre>
+                    <div className="w-124 h-96 rounded-2xl border styled-border styled-background flex flex-col justify-end items-center">
+                        <div className="w-120 h-8 flex flex-row justify-start items-end">
+                            <div className="w-fit px-2 py-1 border relative top-1 rounded-tl-xl styled-border">
+                                <p>Inventory.cs</p>
+                            </div>
+                            <div className="w-fit px-2 py-1 border relative top-1 styled-border">
+                                <p>ChunkGenerator.cs</p>
+                            </div>
+                        </div>
+                        <pre className="h-80 overflow-hidden w-120 border styled-border mb-5 z-20">
+                            <code className="language-csharp overflow-scroll h-full">{inventoryMarkdown}</code>
+                        </pre>
+                    </div>
                 </div>
             </section>
         </div>

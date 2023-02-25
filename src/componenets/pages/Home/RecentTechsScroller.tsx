@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import CarouselSlider from "../../layout/CarouselSlider/CarouselSlider";
 import { motion } from "framer-motion";
 
 const slideClass =
-    "slide-container h-24 flex items-center justify-start p-3 w-56 rounded-2xl border-2 shopify-shadow";
+    "styled-border styled-background h-24 flex items-center justify-start p-3 w-56 rounded-2xl border-2 shopify-shadow";
 const imgClass = "h-16 w-16 select-none";
 
 const transition = {
