@@ -3,13 +3,13 @@ import "./Navbar.css";
 import React from "react";
 import ThemeButton from "./ThemeButton/ThemeButton";
 
-interface Page {
+type Page = {
     name: string;
     link: string;
 }
 
 interface Props {
-    pages: Array<Page>;
+    pages: Page[];
 }
 
 export default function Navbar({ pages }: Props): JSX.Element {

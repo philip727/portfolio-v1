@@ -42,7 +42,7 @@ const createSlide = ({ name, img, sClassName, imgClass, tooltip }: Slide,  index
     return (
         <Tooltip key={index} text={tooltip}>
             <motion.div whileHover={{ scale: 1.1 }} className={sClassName}>
-                <img className={imgClass} src={img} />
+                <img className={imgClass} src={`${window.location.origin}${img}`} />
                 <p className="text-center m-auto font-medium text-lg">{name}</p>
             </motion.div>
         </Tooltip>

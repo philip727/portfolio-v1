@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.scss";
-import AboutMe from "./Introduction";
+import Introduction from "./Introduction";
 import RecentTechsTitle from "./RecentTechsTitle";
 import RecentTechsScroller from "./RecentTechsScroller";
 
@@ -9,7 +9,7 @@ export default function Home(): JSX.Element {
     return (
         <div>
             <section id="introduction-section">
-                <AboutMe />
+                <Introduction />
                 {/* <div
                     key={1}
                     id="top-line"

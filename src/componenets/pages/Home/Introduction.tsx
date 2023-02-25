@@ -32,7 +32,7 @@ const paraText = {
     hidden: { x: 120, opacity: 0 },
 };
 
-export default function AboutMe() {
+export default function Introduction() {
     const scrollRef = useRef(null)
 
     return (

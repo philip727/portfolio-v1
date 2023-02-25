@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function ThemeButton() {
     const [theme, setTheme]: [string, Dispatch<SetStateAction<string>>] = useState("dark");
-    const themeButtonIcon = useRef<string>("./images/navbar/sun-icon.svg");
+    const themeButtonIcon = useRef<string>(`${window.location.origin}/images/navbar/sun-icon.svg`);
 
     useEffect(() => {
         document.body.className = theme;
@@ -11,10 +11,10 @@ export default function ThemeButton() {
 
     const toggleTheme = () => {
         if (theme == "light") {
-            themeButtonIcon.current = "./images/navbar/sun-icon.svg";
+            themeButtonIcon.current = `${window.location.origin}/images/navbar/sun-icon.svg`;
             setTheme("dark");
         } else {
-            themeButtonIcon.current = "./images/navbar/moon-icon.svg";
+            themeButtonIcon.current = `${window.location.origin}/images/navbar/moon-icon.svg`;
             setTheme("light");
         }
     };

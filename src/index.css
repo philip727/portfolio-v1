@@ -12,10 +12,10 @@ body {
     transition: background-color 0.3s;
 }
 
-code {
+/* code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
-}
+} */
 
 body * {
     margin: 0 0 0 0;
@@ -27,15 +27,4 @@ h1 {
 
 p {
     transition: color 0.3s;
-}
-
-/* width */
-::-webkit-scrollbar {
-    width: 0.6rem;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #2a9c6a;
-    border-radius: 5rem;
 }
