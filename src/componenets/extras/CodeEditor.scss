@@ -1,0 +1,42 @@
+.code-display {
+    &::-webkit-scrollbar {
+        background-color: #1e1e1e00;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #00000000;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background-color: #56565610;
+
+        transition-duration: 300ms;
+        transition-property: background-color;
+
+        &:hover {
+            background-color: #393939;
+        }
+    }
+    &::-webkit-scrollbar-corner {
+        opacity: 0;
+    }
+}
+
+.selected-tab {
+    color: #f8f8f8;
+
+
+    & > p {
+        filter: brightness(1.01)
+    }
+}
+
+.nonselected-tab {
+    color: rgb(155, 155, 155);
+
+
+    &:hover {
+        color: rgb(202, 202, 202);
+    }
+}

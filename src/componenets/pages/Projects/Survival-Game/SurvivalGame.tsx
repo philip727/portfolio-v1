@@ -1,13 +1,8 @@
 import React, { useEffect } from "react";
-import hljs from "highlight.js/lib/core";
-import csharp from "highlight.js/lib/languages/csharp";
-import "highlight.js/styles/vs2015.css";
 import "./SurvivalGame.scss";
+import CodeEditor from "../../../extras/CodeEditor";
 
-export default function SurvivalGame() {
-    hljs.registerLanguage("csharp", csharp);
-    
-    const inventoryMarkdown = 
+const inventoryMarkdown = 
 `namespace Philip.Inventory
 {
     [System.Serializable]
@@ -24,10 +19,80 @@ export default function SurvivalGame() {
             ConstructSlots();
         }`
 
-    useEffect(() => {
-        hljs.highlightAll();
-    })
+const chunkMarkdown = 
+`[BurstCompile]
+private void UpdateChunks()
+{
+    int chunkX = Mathf.FloorToInt(s_viewerPosition.x / _worldGenerationSettings.ChunkSize);
+    int chunkY = Mathf.FloorToInt(s_viewerPosition.y / _worldGenerationSettings.ChunkSize);
+    Vector2Int bottomLeftOfCurrentChunk = new Vector2Int(chunkX * _worldGenerationSettings.ChunkSize, chunkY * _worldGenerationSettings.ChunkSize);
 
+    // Clear the chunks rendered from last frame as we don't want to check them in this dict
+    _chunksReceivedToRenderThisFrame.Clear();
+
+    for (int x = -MAX_VIEW_DISTANCE; x < MAX_VIEW_DISTANCE; x++)
+    {
+        for (int y = -MAX_VIEW_DISTANCE; y < MAX_VIEW_DISTANCE; y++)
+        {
+            // The current chunk coordinates
+            Vector2Int bottomLeftOfChunkInViewDist = new Vector2Int(bottomLeftOfCurrentChunk.x + (x * _worldGenerationSettings.ChunkSize),
+                                                                    bottomLeftOfCurrentChunk.y + (y * _worldGenerationSettings.ChunkSize));
+
+            ChunkData chunkData;
+            if (!_chunksThatHaveBeenCreated.ContainsKey(bottomLeftOfChunkInViewDist))
+            {
+                // At this point the chunk is in the view distance but has never been created
+                chunkData = _worldGenerationHandler.RequestChunkData(bottomLeftOfChunkInViewDist.x, bottomLeftOfChunkInViewDist.y);
+                CreateChunkFromData(chunkData);
+                _chunksThatHaveBeenCreated.Add(bottomLeftOfChunkInViewDist, chunkData);
+            }
+            else
+            {
+                // The chunk has been created before and is now in the view distance
+                _chunksThatHaveBeenCreated.TryGetValue(bottomLeftOfChunkInViewDist, out chunkData);
+
+                // If it's not visible, then we should render it
+                if(!chunkData.IsVisible)
+                {
+                    chunkData.SetVisible(true);
+                }
+            }`
+
+const ruleTileMarkdown = 
+`[System.Serializable]
+public class RuleTile
+{
+    [SerializeField] private SpriteType _spriteType = SpriteType.Default;
+    [ConditionalField("_spriteType", SpriteType.Default)] public Tile tile;
+    [ConditionalField("_spriteType", SpriteType.Animated)] public AnimatedTile animatedTile;
+    public SpriteType SpriteType { get { return _spriteType; } }
+    [field: SerializeField] public List<RuleNodes> RequiredLandNodes { private set; get; } = new List<RuleNodes>();
+    [field: SerializeField] public List<RuleNodes> RequiredNothingNodes { private set; get; } = new List<RuleNodes>();
+    [field: SerializeField] public List<RuleNodes> AddColliders { private set; get; } = new List<RuleNodes>();
+
+    public Vector3Int ConvertRuleToOffset(RuleNodes ruleNode)
+    {
+        RuleNodesByCoordinate.TryGetValue(ruleNode, out Vector2Int offset);
+        return (Vector3Int)offset;
+    }
+
+    // Checks through its needs, if it meets then it will be available
+    public bool CheckIfMeetsRequirements(ChunkData chunkData, int x, int y)
+    {
+        foreach (RuleNodes requiredNode in RequiredLandNodes)
+        {
+            RuleNodesByCoordinate.TryGetValue(requiredNode, out Vector2Int offset);
+            Vector2Int coordinates = chunkData.Coordinates + new Vector2Int(x, y) + offset;
+
+            if (!WorldGenerationHandler.Instance.IsCoordinateWater(coordinates))
+            {
+                continue;
+            }
+
+            return false;
+        }`
+
+export default function SurvivalGame() {
 
     return (
         <div>
@@ -40,19 +105,26 @@ export default function SurvivalGame() {
                         A 16-bit infinitely generated survival game made in
                         unity.
                     </p>
-                    <div className="w-124 h-96 rounded-2xl border styled-border styled-background flex flex-col justify-end items-center">
-                        <div className="w-120 h-8 flex flex-row justify-start items-end">
-                            <div className="w-fit px-2 py-1 border relative top-1 rounded-tl-xl styled-border">
-                                <p>Inventory.cs</p>
-                            </div>
-                            <div className="w-fit px-2 py-1 border relative top-1 styled-border">
-                                <p>ChunkGenerator.cs</p>
-                            </div>
-                        </div>
-                        <pre className="h-80 overflow-hidden w-120 border styled-border mb-5 z-20">
-                            <code className="language-csharp overflow-scroll h-full">{inventoryMarkdown}</code>
-                        </pre>
-                    </div>
+                    <CodeEditor files={[
+                        {
+                            fileName: "Inventory.cs",
+                            codePreview: inventoryMarkdown,
+                            language: "csharp",
+                            imageLogo: `/images/logos/file_csharp.svg`
+                        },
+                        {
+                            fileName: "ChunkGenerator.cs",
+                            codePreview: chunkMarkdown,
+                            language: "csharp",
+                            imageLogo: `/images/logos/file_csharp.svg`
+                        },
+                        {
+                            fileName: "RuleTile.cs",
+                            codePreview: ruleTileMarkdown,
+                            language: "csharp",
+                            imageLogo: `/images/logos/file_csharp.svg`
+                        }
+                    ]} />
                 </div>
             </section>
         </div>

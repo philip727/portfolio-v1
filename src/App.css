@@ -124,6 +124,10 @@ body {
     width: 57rem;
 }
 
+.h-100 {
+    height: 25rem;
+}
+
 .shopify-shadow {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
