@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./SurvivalGame.scss";
 import CodeEditor from "../../../extras/CodeEditor";
+import { motion } from "framer-motion";
 
-const inventoryMarkdown = 
-`namespace Philip.Inventory
+const inventoryMarkdown = `namespace Philip.Inventory
 {
     [System.Serializable]
     public class Inventory<TItem, TItemType> where TItem : InventoryItem, new() where TItemType : Enum
@@ -17,10 +17,9 @@ const inventoryMarkdown =
             InventoryName = inventoryName;
             Slots = new InventorySlot<TItem, TItemType>[24];
             ConstructSlots();
-        }`
+        }`;
 
-const chunkMarkdown = 
-`[BurstCompile]
+const chunkMarkdown = `[BurstCompile]
 private void UpdateChunks()
 {
     int chunkX = Mathf.FloorToInt(s_viewerPosition.x / _worldGenerationSettings.ChunkSize);
@@ -56,48 +55,52 @@ private void UpdateChunks()
                 {
                     chunkData.SetVisible(true);
                 }
-            }`
+            }`;
 
-const ruleTileMarkdown = 
-`[System.Serializable]
-public class RuleTile
+const ruleTileMarkdown = `public abstract class DamageableBehaviour : MonoBehaviour, IDamageable
 {
-    [SerializeField] private SpriteType _spriteType = SpriteType.Default;
-    [ConditionalField("_spriteType", SpriteType.Default)] public Tile tile;
-    [ConditionalField("_spriteType", SpriteType.Animated)] public AnimatedTile animatedTile;
-    public SpriteType SpriteType { get { return _spriteType; } }
-    [field: SerializeField] public List<RuleNodes> RequiredLandNodes { private set; get; } = new List<RuleNodes>();
-    [field: SerializeField] public List<RuleNodes> RequiredNothingNodes { private set; get; } = new List<RuleNodes>();
-    [field: SerializeField] public List<RuleNodes> AddColliders { private set; get; } = new List<RuleNodes>();
+    [field: SerializeField] public int MaxHealth { private set; get; }
+    [field: SerializeField] public int Health { private set; get; }
 
-    public Vector3Int ConvertRuleToOffset(RuleNodes ruleNode)
+    public virtual void Death()
     {
-        RuleNodesByCoordinate.TryGetValue(ruleNode, out Vector2Int offset);
-        return (Vector3Int)offset;
+        Destroy(gameObject);
     }
 
-    // Checks through its needs, if it meets then it will be available
-    public bool CheckIfMeetsRequirements(ChunkData chunkData, int x, int y)
+    public void TakeDamage(int damage)
     {
-        foreach (RuleNodes requiredNode in RequiredLandNodes)
+        Health -= damage;
+
+        if(Health <= 0)
         {
-            RuleNodesByCoordinate.TryGetValue(requiredNode, out Vector2Int offset);
-            Vector2Int coordinates = chunkData.Coordinates + new Vector2Int(x, y) + offset;
-
-            if (!WorldGenerationHandler.Instance.IsCoordinateWater(coordinates))
-            {
-                continue;
-            }
-
-            return false;
-        }`
+            Death();
+        }
+    }
+}`;
 
 export default function SurvivalGame() {
+    const [currentPage, setCurrentPage] = useState(0);
+
+    const textSlide = {
+        hidden: {
+            x: -85,
+        },
+        show: {
+            x: 0,
+        },
+    };
+
+    const transition = {
+        duration: 0.1,
+        type: "spring",
+        stiffness: 150,
+        damping: 20,
+    };
 
     return (
         <div>
             <section id="survival-game-title" className="relative">
-                <div className="w-full flex flex-col justify-center items-center">
+                <div className="w-full grid justify-center">
                     <h1 className="text-7xl font-bold tracking-wider text-center">
                         Survival Game
                     </h1>
@@ -105,26 +108,183 @@ export default function SurvivalGame() {
                         A 16-bit infinitely generated survival game made in
                         unity.
                     </p>
-                    <CodeEditor files={[
-                        {
-                            fileName: "Inventory.cs",
-                            codePreview: inventoryMarkdown,
-                            language: "csharp",
-                            imageLogo: `/images/logos/file_csharp.svg`
-                        },
-                        {
-                            fileName: "ChunkGenerator.cs",
-                            codePreview: chunkMarkdown,
-                            language: "csharp",
-                            imageLogo: `/images/logos/file_csharp.svg`
-                        },
-                        {
-                            fileName: "RuleTile.cs",
-                            codePreview: ruleTileMarkdown,
-                            language: "csharp",
-                            imageLogo: `/images/logos/file_csharp.svg`
-                        }
-                    ]} />
+                    <div className="flex items-start mt-20 w-full gap-16">
+                        {currentPage == 0 && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.3 }}
+                                className="flex flex-col items-end w-1/2"
+                            >
+                                <motion.h1
+                                    className="w-full text-6xl font-bold mt-6 text-right"
+                                    variants={textSlide}
+                                    initial="hidden"
+                                    whileInView="show"
+                                    viewport={{ once: true }}
+                                    transition={transition}
+                                >
+                                    Grind & Expand
+                                </motion.h1>
+                                <motion.p
+                                    className="w-full bright-text text-xl mt-4 text-right"
+                                    variants={{
+                                        ...textSlide,
+                                        hidden: { x: -125 },
+                                    }}
+                                    initial="hidden"
+                                    whileInView="show"
+                                    viewport={{ once: true }}
+                                    transition={transition}
+                                >
+                                    Get materials and expand your base!
+                                </motion.p>
+                                <motion.p
+                                    className="max-w-2xl w-full text-lg font-light text-right"
+                                    variants={{
+                                        ...textSlide,
+                                        hidden: { x: -165 },
+                                    }}
+                                    initial="hidden"
+                                    whileInView="show"
+                                    viewport={{ once: true }}
+                                    transition={transition}
+                                >
+                                    Scavenge and farm for materials, searching
+                                    the vast environment for unique biomes and
+                                    new structures with new materials to gather.
+                                    Create new machinery to help with your
+                                    automation and farming! Collect the rarest
+                                    items and show them off in your base!
+                                </motion.p>
+                            </motion.div>
+                        )}
+                        {currentPage == 1 && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.3 }}
+                                className="flex flex-col items-end w-1/2"
+                            >
+                                <motion.h1
+                                    className="text-6xl font-bold mt-6 text-right w-full"
+                                    variants={textSlide}
+                                    initial="hidden"
+                                    whileInView="show"
+                                    viewport={{ once: true }}
+                                    transition={transition}
+                                >
+                                    Explore... Infinitely!
+                                </motion.h1>
+                                <motion.p
+                                    className="bright-text text-xl mt-4 text-right w-full"
+                                    variants={{
+                                        ...textSlide,
+                                        hidden: { x: -125 },
+                                    }}
+                                    initial="hidden"
+                                    whileInView="show"
+                                    viewport={{ once: true }}
+                                    transition={transition}
+                                >
+                                    Never ending exploration!
+                                </motion.p>
+                                <motion.p
+                                    className="text-lg max-w-2xl font-light text-right w-full"
+                                    variants={{
+                                        ...textSlide,
+                                        hidden: { x: -165 },
+                                    }}
+                                    initial="hidden"
+                                    whileInView="show"
+                                    viewport={{ once: true }}
+                                    transition={transition}
+                                >
+                                    Explore the infinitely expanding unqiue
+                                    world, it never ends and it's never the
+                                    same! With tonnes of biomes to discover, new
+                                    enemies to fight, unique drops to claim and
+                                    new resources to utilize.
+                                </motion.p>
+                            </motion.div>
+                        )}
+                        {currentPage == 2 && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.3 }}
+                                className="flex flex-col items-end w-1/2"
+                            >
+                                <motion.h1
+                                    className="text-6xl font-bold mt-6 text-right w-full"
+                                    variants={textSlide}
+                                    initial="hidden"
+                                    whileInView="show"
+                                    viewport={{ once: true }}
+                                    transition={transition}
+                                >
+                                    Kill... Kill... Kill...
+                                </motion.h1>
+                                <motion.p
+                                    className="bright-text text-xl mt-4 text-right w-full"
+                                    variants={{
+                                        ...textSlide,
+                                        hidden: { x: -125 },
+                                    }}
+                                    initial="hidden"
+                                    whileInView="show"
+                                    viewport={{ once: true }}
+                                    transition={transition}
+                                >
+                                    Survive! But most importantly, loot.
+                                </motion.p>
+                                <motion.p
+                                    className="text-lg max-w-2xl font-light text-right w-full"
+                                    variants={{
+                                        ...textSlide,
+                                        hidden: { x: -165 },
+                                    }}
+                                    initial="hidden"
+                                    whileInView="show"
+                                    viewport={{ once: true }}
+                                    transition={transition}
+                                >
+                                    By time it's night you will have to protect
+                                    your base from the pesky creatures that roam
+                                    the lands. Find and destroy bosses to get
+                                    their unique loot, weapons and tools! Expect
+                                    a different battle from every enemy, you
+                                    never know what they might have up their
+                                    sleeve.
+                                </motion.p>
+                            </motion.div>
+                        )}
+                        <div className="w-1/2">
+                            <CodeEditor
+                                files={[
+                                    {
+                                        fileName: "Inventory.cs",
+                                        codePreview: inventoryMarkdown,
+                                        language: "csharp",
+                                    },
+                                    {
+                                        fileName: "ChunkRenderer.cs",
+                                        codePreview: chunkMarkdown,
+                                        language: "csharp",
+                                    },
+                                    {
+                                        fileName: "DamageableBehaviour.cs",
+                                        codePreview: ruleTileMarkdown,
+                                        language: "csharp",
+                                    },
+                                ]}
+                                onPageChange={(page) => setCurrentPage(page)}
+                            />
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>

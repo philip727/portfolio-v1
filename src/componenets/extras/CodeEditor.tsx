@@ -7,7 +7,6 @@ type FileDisplay = {
     fileName: string;
     codePreview: string;
     language: string;
-    imageLogo?: string;
 };
 
 type PageDisplay = {
@@ -27,28 +26,34 @@ export default function CodeEditor({ files, onPageChange }: Props) {
 
     useEffect(() => {
         hljs.highlightAll();
-    });
+    }, [currentFile]);
 
     return (
-        <div className="w-124 h-100 rounded-lg border styled-border styled-background flex flex-col justify-end items-center">
+        <div className="w-124 h-100 rounded-md border styled-border styled-background flex flex-col justify-end items-center material-shadow">
             <div className="w-120 h-fit flex  items-center">
-                <div className="gap-px h-9 flex items-end border-background px-px rounded-t-lg">
+                <div className="gap-px h-9 flex items-end border-background px-px rounded-t-md">
                     {files?.map((value, index) => {
+                        let fileImage = "";
                         pagesToDisplay.push({
                             page: index,
                             code: value.codePreview,
                             language: value.language
                         });
+                        switch(value.language) {
+                            case "csharp": 
+                                fileImage = `/images/logos/file_csharp.svg`
+                                break;
+                        }
                         return (
                             <div
                                 key={index}
                                 className={`w-fit px-4 h-9 ${
                                     index == 0 && index == files.length - 1
-                                        ? "rounded-t-lg"
+                                        ? "rounded-t-md"
                                         : index == 0
-                                        ? "rounded-tl-lg"
+                                        ? "rounded-tl-md"
                                         : index == files.length - 1
-                                        ? "rounded-tr-lg"
+                                        ? "rounded-tr-md"
                                         : " "
                                 } ${
                                     currentFile == index
@@ -62,16 +67,13 @@ export default function CodeEditor({ files, onPageChange }: Props) {
                                     }
                                 }}
                             >
-                                {value.imageLogo && (
-                                    <img src={`${window.location.origin}/${value.imageLogo}`} className="w-4 h-4 mr-2" />
+                                {fileImage.length > 0 && (
+                                    <img src={`${window.location.origin}/${fileImage}`} className="w-4 h-4 mr-2" />
                                 )}
                                 <p className="text-sm">{value.fileName}</p>
                             </div>
                         );
                     })}
-                    {/* <div className="w-fit px-4 h-9 rounded-tr-lg styled-background relative top-px flex flex-row justify-center items-center">
-                        <p className="text-sm">ChunkGenerator.cs</p>
-                    </div> */}
                 </div>
             </div>
             <pre className="h-80 overflow-hidden w-120 border styled-border mb-5 z-10">
