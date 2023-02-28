@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.1b31dd2c.css",
-    "main.js": "/static/js/main.292b974a.js",
-    "static/js/787.f07c9343.chunk.js": "/static/js/787.f07c9343.chunk.js",
-    "static/media/layered-waves.svg": "/static/media/layered-waves.3d0a819c7d0d2c0640e6.svg",
-    "index.html": "/index.html",
-    "main.1b31dd2c.css.map": "/static/css/main.1b31dd2c.css.map",
-    "main.292b974a.js.map": "/static/js/main.292b974a.js.map",
-    "787.f07c9343.chunk.js.map": "/static/js/787.f07c9343.chunk.js.map"
+    "main.css": "/react-portfolio/static/css/main.48dc3345.css",
+    "main.js": "/react-portfolio/static/js/main.249c4ffa.js",
+    "static/js/787.f07c9343.chunk.js": "/react-portfolio/static/js/787.f07c9343.chunk.js",
+    "static/media/layered-waves.svg": "/react-portfolio/static/media/layered-waves.3d0a819c7d0d2c0640e6.svg",
+    "index.html": "/react-portfolio/index.html",
+    "main.48dc3345.css.map": "/react-portfolio/static/css/main.48dc3345.css.map",
+    "main.249c4ffa.js.map": "/react-portfolio/static/js/main.249c4ffa.js.map",
+    "787.f07c9343.chunk.js.map": "/react-portfolio/static/js/787.f07c9343.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b31dd2c.css",
-    "static/js/main.292b974a.js"
+    "static/css/main.48dc3345.css",
+    "static/js/main.249c4ffa.js"
   ]
 }
