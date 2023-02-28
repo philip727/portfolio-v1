@@ -22,7 +22,7 @@ export default function Navbar({ pages }: Props): JSX.Element {
                 className="w-1/3 h-full flex justify-start items-center"
                 id="navbar-btn-wrapper"
             >
-                <ThemeButton />
+
             </div>
             <h1
                 className="text-center h-fit font-semibold text-4xl flex justify-center items-center tracking-wider w-1/3"

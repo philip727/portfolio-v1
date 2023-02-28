@@ -41,7 +41,7 @@ export default function CodeEditor({ files, onPageChange }: Props) {
                         });
                         switch(value.language) {
                             case "csharp": 
-                                fileImage = `/images/logos/file_csharp.svg`
+                                fileImage = `images/logos/file_csharp.svg`
                                 break;
                         }
                         return (
