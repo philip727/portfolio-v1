@@ -90,6 +90,23 @@ export default function SurvivalGame() {
         },
     };
 
+    const imageAnimations = {
+        start: {
+            scale: 0.93,
+            opacity: 0,
+        },
+        show: {
+            opacity: 1,
+        },
+        hover: {
+            scale: 0.98,
+            transition: {
+                duration: 0.1,
+                delay: 0,
+            },
+        },
+    };
+
     const transition = {
         duration: 0.1,
         type: "spring",
@@ -99,15 +116,63 @@ export default function SurvivalGame() {
 
     return (
         <div>
-            <section id="survival-game-title" className="relative">
+            <section id="survival-game" className="relative">
                 <div className="w-full grid justify-center">
-                    <h1 className="text-7xl font-bold tracking-wider text-center">
+                    <motion.h1
+                        className="text-7xl font-bold tracking-wider text-center"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3 }}
+                    >
                         Survival Game
-                    </h1>
-                    <p className="text-center text-3xl font-normal bright-text">
+                    </motion.h1>
+                    <motion.p
+                        className="text-center text-3xl font-normal bright-text"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3 }}
+                    >
                         A 16-bit infinitely generated survival game made in
                         unity.
-                    </p>
+                    </motion.p>
+                    <div className="xl-offset:flex hidden flex-row justify-center items-center mt-12 gap-3">
+                        <motion.img
+                            src={`${window.location.origin}/images/projects/SurvivalGame/survival-game-2.png`}
+                            className="max-w-md 3xl:max-w-xl 2k:max-w-2xl material-shadow rounded-sm saturate-50 hover:saturate-100 transition-all duration-300"
+                            variants={imageAnimations}
+                            initial="start"
+                            whileInView="show"
+                            whileHover="hover"
+                        />
+                        <motion.img
+                            src={`${window.location.origin}/images/projects/SurvivalGame/survival-game-1.png`}
+                            className="max-w-md 3xl:max-w-xl 2k:max-w-2xl material-shadow rounded-sm saturate-50 hover:saturate-100 transition-all duration-300"
+                            variants={{
+                                ...imageAnimations,
+                                start: { 
+                                    ...imageAnimations.start, 
+                                    scale: 1 
+                                },
+                                hover: {
+                                    ...imageAnimations.hover,
+                                    scale: 1.05,
+                                },
+                            }}
+                            initial="start"
+                            whileInView="show"
+                            whileHover="hover"
+                        />
+                        <motion.img
+                            src={`${window.location.origin}/images/projects/SurvivalGame/survival-game-1.png`}
+                            className="max-w-md 3xl:max-w-xl 2k:max-w-2xl material-shadow rounded-sm saturate-50 hover:saturate-100 transition-all duration-300"
+                            variants={imageAnimations}
+                            initial="start"
+                            whileInView="show"
+                            whileHover="hover"
+                        />
+                    </div>
                     <div className="flex items-start mt-20 w-full gap-16">
                         {currentPage == 0 && (
                             <motion.div
@@ -128,7 +193,7 @@ export default function SurvivalGame() {
                                     Grind & Expand
                                 </motion.h1>
                                 <motion.p
-                                    className="w-full bright-text text-xl mt-4 text-right"
+                                    className="w-full bright-text text-2xl mt-2 text-right"
                                     variants={{
                                         ...textSlide,
                                         hidden: { x: -125 },
@@ -179,7 +244,7 @@ export default function SurvivalGame() {
                                     Explore... Infinitely!
                                 </motion.h1>
                                 <motion.p
-                                    className="bright-text text-xl mt-4 text-right w-full"
+                                    className="bright-text text-2xl mt-2 text-right w-full"
                                     variants={{
                                         ...textSlide,
                                         hidden: { x: -125 },
@@ -229,7 +294,7 @@ export default function SurvivalGame() {
                                     Kill... Kill... Kill...
                                 </motion.h1>
                                 <motion.p
-                                    className="bright-text text-xl mt-4 text-right w-full"
+                                    className="bright-text text-2xl mt-2 text-right w-full"
                                     variants={{
                                         ...textSlide,
                                         hidden: { x: -125 },

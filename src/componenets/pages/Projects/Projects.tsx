@@ -3,13 +3,14 @@ import "./ProjectContainer.scss";
 import ProjectContainer from "./ProjectContainer";
 import Tooltip from "../../extras/Tooltip";
 
-type Project = {
+export type Project = {
     name: string;
     id: number;
     description: string;
     image: string;
     tags: string[];
     link: string;
+    directLink?: boolean
 }
 
 const ProjectsArray: Project[] = [
@@ -17,9 +18,17 @@ const ProjectsArray: Project[] = [
         name: "Untitlted Survival Game",
         id: 1,
         description: "Top down 16-bit survival game",
-        image: "/images/project/projects/world-gen-preview.png",
+        image: "/images/projects/SurvivalGame/world-gen-preview.png",
         tags: ["C#", "Unity"],
         link: "survival-game",
+    },
+    {
+        name: "CPJourney Create Account",
+        id: 2,
+        description: "Recreation of the original Club Penguin create account page for CPJourney",
+        image: "/images/projects/CPJourney-Create-Acc/create-acc-preview.png",
+        tags: ["React", "Typescript", "Javascript", "PHP", "CSS", "SASS", "Tailwind"],
+        link: "https://play.cpjourney.net/create/",
     },
 ];
 
@@ -29,14 +38,8 @@ export default function Projects() {
             {ProjectsArray.map((project, index) => (
                 <Tooltip key={index} text={project.description}>
                     <ProjectContainer
-                        name={project.name}
-                        description={project.description}
-                        id={project.id}
-                        image={project.image}
-                        key={index}
+                        project={project}
                         index={index}
-                        tags={project.tags}
-                        link={project.link}
                     />
                 </Tooltip>
             ))}
