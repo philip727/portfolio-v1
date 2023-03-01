@@ -14,6 +14,7 @@ module.exports = {
             "2xl": "1536px",
             "2xl-offset": "1550px",
             "3xl": "1720px",
+            "FHD": "1920px",
             "2k": "2560px",
         },
         extend: {
@@ -21,6 +22,17 @@ module.exports = {
                 25: "25%",
                 50: "50%",
             },
+            width: {
+                '112': '36rem',
+                '90s': '90vw',
+                '156': '53rem',
+                "180": '62rem',
+                '95p': '95%',
+            },
+            height: {
+                '100': '25rem',
+                '108': '32rem',
+            }
         },
     },
     plugins: [],

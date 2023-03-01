@@ -32,11 +32,33 @@
     }
 }
 
+.code-background {
+    background-color: #1e1e1e;
+}
+
 .nonselected-tab {
     color: rgb(155, 155, 155);
 
 
     &:hover {
         color: rgb(202, 202, 202);
+    }
+}
+
+.w-code-container {
+    width: 91%;
+}
+
+.w-code-editor {
+    width: 90vw;
+}
+
+@media only screen and (min-width: 1024px) {
+    .w-code-container {
+        width: 54rem;
+    }
+
+    .w-code-editor {
+        width: 57rem;
     }
 }

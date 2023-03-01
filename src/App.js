@@ -1,7 +1,6 @@
 // CSS
 import "./App.css";
-import "./styles/DarkTheme.scss"
-import "./styles/LightTheme.scss"
+import "./styles/Styles.scss"
 
 // React
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
@@ -21,7 +20,6 @@ const router = createBrowserRouter(
             <Route index element={<Home />} />
             <Route path="projects">
                 <Route index element={<Projects />} />
-                <Route path="survival-game" element={<SurvivalGame />} />
             </Route>
             <Route path="*" element={<NotFound />} />
         </Route>

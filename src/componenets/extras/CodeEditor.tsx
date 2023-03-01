@@ -29,8 +29,8 @@ export default function CodeEditor({ files, onPageChange }: Props) {
     }, [currentFile]);
 
     return (
-        <div className="w-124 h-100 rounded-md border styled-border styled-background flex flex-col justify-end items-center material-shadow">
-            <div className="w-120 h-fit flex  items-center">
+        <div className="w-11/12 lg:w-156 h-100 rounded-md border styled-border styled-background flex flex-col justify-end items-center material-shadow">
+            <div className="w-95p h-fit flex items-center">
                 <div className="gap-px h-9 flex items-end border-background px-px rounded-t-md">
                     {files?.map((value, index) => {
                         let fileImage = "";
@@ -70,13 +70,13 @@ export default function CodeEditor({ files, onPageChange }: Props) {
                                 {fileImage.length > 0 && (
                                     <img src={`${window.location.origin}/${fileImage}`} className="w-4 h-4 mr-2" />
                                 )}
-                                <p className="text-sm">{value.fileName}</p>
+                                <p className="text-sm text-ellipsis whitespace-nowrap">{value.fileName}</p>
                             </div>
                         );
                     })}
                 </div>
             </div>
-            <pre className="h-80 overflow-hidden w-120 border styled-border mb-5 z-10">
+            <pre className="w-95p h-80 overflow-hidden border styled-border mb-5 z-10">
                 <code className={`language-${pagesToDisplay[currentFile].language} overflow-scroll code-display h-full`}>
                     {pagesToDisplay[currentFile].code}
                 </code>

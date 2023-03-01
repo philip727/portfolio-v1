@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import "./SurvivalGame.scss";
 import CodeEditor from "../../../extras/CodeEditor";
-import { motion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 
 const inventoryMarkdown = `namespace Philip.Inventory
 {
@@ -78,46 +78,103 @@ const ruleTileMarkdown = `public abstract class DamageableBehaviour : MonoBehavi
     }
 }`;
 
+type PageContent = {
+    header: string;
+    shortDesc: string;
+    fullDesc: string;
+};
+
+type PageContentObject = {
+    [key: number]: PageContent;
+};
+
+const pageContent: PageContentObject = {
+    0: {
+        header: "Grind & Expand",
+        shortDesc: "Get materials and expand your base!",
+        fullDesc: `Scavenge and farm for materials, searching
+        the vast environment for unique biomes and
+        new structures with new materials to gather.
+        Create new machinery to help with your
+        automation and farming! Collect the rarest
+        items and show them off in your base!`,
+    },
+    1: {
+        header: "Explore... Infinitely!",
+        shortDesc: "Never ending exploration!",
+        fullDesc: `Explore the infinitely expanding unqiue
+        world, it never ends and it's never the
+        same! With tonnes of biomes to discover, new
+        enemies to fight, unique drops to claim and
+        new resources to utilize.`,
+    },
+    2: {
+        header: "Kill... Kill... Kill...",
+        shortDesc: "Survive! But most importantly, loot.",
+        fullDesc: `By time it's night you will have to protect
+        your base from the pesky creatures that roam
+        the lands. Find and destroy bosses to get
+        their unique loot, weapons and tools! Expect
+        a different battle from every enemy, you
+        never know what they might have up their
+        sleeve.`,
+    },
+};
+
+const textSlide = {
+    hidden: {
+        x: -85,
+    },
+    show: {
+        x: 0,
+    },
+};
+
+const containerAnimations = {
+    hidden: {
+        opacity: 0,
+    },
+    show: {
+        opacity: 1,
+    },
+};
+
+const imageAnimations = {
+    start: {
+        scale: 0.93,
+        opacity: 0,
+    },
+    show: {
+        opacity: 1,
+    },
+    hover: {
+        scale: 0.98,
+        transition: {
+            duration: 0.1,
+            delay: 0,
+        },
+    },
+};
+
+const transition = {
+    duration: 0.2,
+    type: "spring",
+    stiffness: 150,
+    damping: 20,
+};
+
 export default function SurvivalGame() {
+    // TODO: re-style code editor
+    // TODO: re-style page text etc
+
+    const targetPage = useRef<number>(0); // Prevents double click animation on page swap
     const [currentPage, setCurrentPage] = useState(0);
-
-    const textSlide = {
-        hidden: {
-            x: -85,
-        },
-        show: {
-            x: 0,
-        },
-    };
-
-    const imageAnimations = {
-        start: {
-            scale: 0.93,
-            opacity: 0,
-        },
-        show: {
-            opacity: 1,
-        },
-        hover: {
-            scale: 0.98,
-            transition: {
-                duration: 0.1,
-                delay: 0,
-            },
-        },
-    };
-
-    const transition = {
-        duration: 0.1,
-        type: "spring",
-        stiffness: 150,
-        damping: 20,
-    };
+    const controls = useAnimationControls();
 
     return (
         <div>
-            <section id="survival-game" className="relative">
-                <div className="w-full grid justify-center">
+            <section className="absolute w-full">
+                <div className="grid justify-center mt-36 w-full">
                     <motion.h1
                         className="text-7xl font-bold tracking-wider text-center"
                         initial={{ opacity: 0 }}
@@ -137,218 +194,140 @@ export default function SurvivalGame() {
                         A 16-bit infinitely generated survival game made in
                         unity.
                     </motion.p>
-                    <div className="xl-offset:flex hidden flex-row justify-center items-center mt-12 gap-3">
-                        <motion.img
-                            src={`${window.location.origin}/images/projects/SurvivalGame/survival-game-2.png`}
-                            className="max-w-md 3xl:max-w-xl 2k:max-w-2xl material-shadow rounded-sm saturate-50 hover:saturate-100 transition-all duration-300"
-                            variants={imageAnimations}
-                            initial="start"
+                </div>
+                <div className="xl-offset:flex hidden flex-row justify-center items-center mt-12 gap-3">
+                    <motion.img
+                        src={`${window.location.origin}/images/projects/SurvivalGame/survival-game-2.png`}
+                        className="max-w-md 3xl:max-w-xl 2k:max-w-2xl material-shadow rounded-sm saturate-50 hover:saturate-100 transition-all duration-300"
+                        variants={imageAnimations}
+                        initial="start"
+                        whileInView="show"
+                        whileHover="hover"
+                    />
+                    <motion.img
+                        src={`${window.location.origin}/images/projects/SurvivalGame/survival-game-1.png`}
+                        className="max-w-md 3xl:max-w-xl 2k:max-w-2xl material-shadow rounded-sm saturate-50 hover:saturate-100 transition-all duration-300"
+                        variants={{
+                            ...imageAnimations,
+                            start: {
+                                ...imageAnimations.start,
+                                scale: 1,
+                            },
+                            hover: {
+                                ...imageAnimations.hover,
+                                scale: 1.05,
+                            },
+                        }}
+                        initial="start"
+                        whileInView="show"
+                        whileHover="hover"
+                    />
+                    <motion.img
+                        src={`${window.location.origin}/images/projects/SurvivalGame/survival-game-1.png`}
+                        className="max-w-md 3xl:max-w-xl 2k:max-w-2xl material-shadow rounded-sm saturate-50 hover:saturate-100 transition-all duration-300"
+                        variants={imageAnimations}
+                        initial="start"
+                        whileInView="show"
+                        whileHover="hover"
+                    />
+                </div>
+                {/* <div className="flex flex-col FHD:flex-row justify-center items-center FHD:items-start gap-16 mt-24">
+                    <motion.div
+                        animate={controls}
+                        variants={containerAnimations}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true }}
+                        transition={{duration: 0.2}}
+                        className="flex flex-col items-end w-1/2"
+                        >
+                        <motion.h1
+                            animate={controls}
+                            className="w-full text-6xl font-bold mt-6 text-center FHD:text-right"
+                            variants={textSlide}
+                            initial="hidden"
                             whileInView="show"
-                            whileHover="hover"
-                        />
-                        <motion.img
-                            src={`${window.location.origin}/images/projects/SurvivalGame/survival-game-1.png`}
-                            className="max-w-md 3xl:max-w-xl 2k:max-w-2xl material-shadow rounded-sm saturate-50 hover:saturate-100 transition-all duration-300"
+                            viewport={{ once: true }}
+                            transition={transition}
+                        >
+                            {pageContent[currentPage].header}
+                        </motion.h1>
+                        <motion.p
+                            animate={controls}
+                            className="w-full bright-text text-2xl mt-2 text-center FHD:text-right"
                             variants={{
-                                ...imageAnimations,
-                                start: { 
-                                    ...imageAnimations.start, 
-                                    scale: 1 
-                                },
-                                hover: {
-                                    ...imageAnimations.hover,
-                                    scale: 1.05,
-                                },
+                                ...textSlide,
+                                hidden: { x: -125 },
                             }}
-                            initial="start"
+                            initial="hidden"
                             whileInView="show"
-                            whileHover="hover"
-                        />
-                        <motion.img
-                            src={`${window.location.origin}/images/projects/SurvivalGame/survival-game-1.png`}
-                            className="max-w-md 3xl:max-w-xl 2k:max-w-2xl material-shadow rounded-sm saturate-50 hover:saturate-100 transition-all duration-300"
-                            variants={imageAnimations}
-                            initial="start"
+                            viewport={{ once: true }}
+                            transition={transition}
+                        >
+                            {pageContent[currentPage].shortDesc}
+                        </motion.p>
+                        <motion.p
+                            animate={controls}
+                            className="FHD:max-w-2xl w-full text-lg font-light text-center FHD:text-right"
+                            variants={{
+                                ...textSlide,
+                                hidden: { x: -165 },
+                            }}
+                            initial="hidden"
                             whileInView="show"
-                            whileHover="hover"
+                            viewport={{ once: true }}
+                            transition={transition}
+                        >
+                            {pageContent[currentPage].fullDesc}
+                        </motion.p>
+                    </motion.div>
+                    <div className="grid justify-center FHD:justify-start w-1/2 mb-12">
+                        <CodeEditor
+                            files={[
+                                {
+                                    fileName: "Inventory.cs",
+                                    codePreview: inventoryMarkdown,
+                                    language: "csharp",
+                                },
+                                {
+                                    fileName: "ChunkRenderer.cs",
+                                    codePreview: chunkMarkdown,
+                                    language: "csharp",
+                                },
+                                {
+                                    fileName: "DamageableBehaviour.cs",
+                                    codePreview: ruleTileMarkdown,
+                                    language: "csharp",
+                                },
+                            ]}
+                            onPageChange={(page) => {
+                                if(page == targetPage.current) {
+                                    return;
+                                }
+
+                                // Prevents double click animation
+                                targetPage.current = page;
+                                controls.start("hidden")
+
+                                // Makes it go back in after half a second
+                                setTimeout(() => {
+                                    controls.start("show")
+                                    setCurrentPage(page)
+                                }, 350)
+                            }}
                         />
                     </div>
-                    <div className="flex items-start mt-20 w-full gap-16">
-                        {currentPage == 0 && (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.3 }}
-                                className="flex flex-col items-end w-1/2"
-                            >
-                                <motion.h1
-                                    className="w-full text-6xl font-bold mt-6 text-right"
-                                    variants={textSlide}
-                                    initial="hidden"
-                                    whileInView="show"
-                                    viewport={{ once: true }}
-                                    transition={transition}
-                                >
-                                    Grind & Expand
-                                </motion.h1>
-                                <motion.p
-                                    className="w-full bright-text text-2xl mt-2 text-right"
-                                    variants={{
-                                        ...textSlide,
-                                        hidden: { x: -125 },
-                                    }}
-                                    initial="hidden"
-                                    whileInView="show"
-                                    viewport={{ once: true }}
-                                    transition={transition}
-                                >
-                                    Get materials and expand your base!
-                                </motion.p>
-                                <motion.p
-                                    className="max-w-2xl w-full text-lg font-light text-right"
-                                    variants={{
-                                        ...textSlide,
-                                        hidden: { x: -165 },
-                                    }}
-                                    initial="hidden"
-                                    whileInView="show"
-                                    viewport={{ once: true }}
-                                    transition={transition}
-                                >
-                                    Scavenge and farm for materials, searching
-                                    the vast environment for unique biomes and
-                                    new structures with new materials to gather.
-                                    Create new machinery to help with your
-                                    automation and farming! Collect the rarest
-                                    items and show them off in your base!
-                                </motion.p>
-                            </motion.div>
-                        )}
-                        {currentPage == 1 && (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.3 }}
-                                className="flex flex-col items-end w-1/2"
-                            >
-                                <motion.h1
-                                    className="text-6xl font-bold mt-6 text-right w-full"
-                                    variants={textSlide}
-                                    initial="hidden"
-                                    whileInView="show"
-                                    viewport={{ once: true }}
-                                    transition={transition}
-                                >
-                                    Explore... Infinitely!
-                                </motion.h1>
-                                <motion.p
-                                    className="bright-text text-2xl mt-2 text-right w-full"
-                                    variants={{
-                                        ...textSlide,
-                                        hidden: { x: -125 },
-                                    }}
-                                    initial="hidden"
-                                    whileInView="show"
-                                    viewport={{ once: true }}
-                                    transition={transition}
-                                >
-                                    Never ending exploration!
-                                </motion.p>
-                                <motion.p
-                                    className="text-lg max-w-2xl font-light text-right w-full"
-                                    variants={{
-                                        ...textSlide,
-                                        hidden: { x: -165 },
-                                    }}
-                                    initial="hidden"
-                                    whileInView="show"
-                                    viewport={{ once: true }}
-                                    transition={transition}
-                                >
-                                    Explore the infinitely expanding unqiue
-                                    world, it never ends and it's never the
-                                    same! With tonnes of biomes to discover, new
-                                    enemies to fight, unique drops to claim and
-                                    new resources to utilize.
-                                </motion.p>
-                            </motion.div>
-                        )}
-                        {currentPage == 2 && (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.3 }}
-                                className="flex flex-col items-end w-1/2"
-                            >
-                                <motion.h1
-                                    className="text-6xl font-bold mt-6 text-right w-full"
-                                    variants={textSlide}
-                                    initial="hidden"
-                                    whileInView="show"
-                                    viewport={{ once: true }}
-                                    transition={transition}
-                                >
-                                    Kill... Kill... Kill...
-                                </motion.h1>
-                                <motion.p
-                                    className="bright-text text-2xl mt-2 text-right w-full"
-                                    variants={{
-                                        ...textSlide,
-                                        hidden: { x: -125 },
-                                    }}
-                                    initial="hidden"
-                                    whileInView="show"
-                                    viewport={{ once: true }}
-                                    transition={transition}
-                                >
-                                    Survive! But most importantly, loot.
-                                </motion.p>
-                                <motion.p
-                                    className="text-lg max-w-2xl font-light text-right w-full"
-                                    variants={{
-                                        ...textSlide,
-                                        hidden: { x: -165 },
-                                    }}
-                                    initial="hidden"
-                                    whileInView="show"
-                                    viewport={{ once: true }}
-                                    transition={transition}
-                                >
-                                    By time it's night you will have to protect
-                                    your base from the pesky creatures that roam
-                                    the lands. Find and destroy bosses to get
-                                    their unique loot, weapons and tools! Expect
-                                    a different battle from every enemy, you
-                                    never know what they might have up their
-                                    sleeve.
-                                </motion.p>
-                            </motion.div>
-                        )}
-                        <div className="w-1/2">
-                            <CodeEditor
-                                files={[
-                                    {
-                                        fileName: "Inventory.cs",
-                                        codePreview: inventoryMarkdown,
-                                        language: "csharp",
-                                    },
-                                    {
-                                        fileName: "ChunkRenderer.cs",
-                                        codePreview: chunkMarkdown,
-                                        language: "csharp",
-                                    },
-                                    {
-                                        fileName: "DamageableBehaviour.cs",
-                                        codePreview: ruleTileMarkdown,
-                                        language: "csharp",
-                                    },
-                                ]}
-                                onPageChange={(page) => setCurrentPage(page)}
-                            />
-                        </div>
+                </div> */}
+                <div className="grid justify-center mt-14">
+                    <div className="w-180 rounded-2xl border-2 backdrop-blur-sm styled-background h-72 material-shadow styled-border">
+                        <p className="text-2xl pt-2 px-3 text-center">
+                            Ever since I was a kid I always wanted to learn how
+                            to code, and I absolutely loved playing games like
+                            minecraft, forager, borderlands, warframe, etc. So I thought
+                            why not trying to do the thing I love most(coding) based on
+                            the stuff I enjoyed as a child(gaming). I tried bringing concepts
+                            from each of these games into one small little 2D world.
+                        </p>
                     </div>
                 </div>
             </section>
