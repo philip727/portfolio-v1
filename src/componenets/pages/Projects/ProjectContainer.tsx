@@ -61,8 +61,8 @@ export default function ProjectContainer({ project: { name, link, tags, id, desc
                     }}
                     key={index}
                 >
-                    <div key={0} className="absolute bg-no-repeat bg-cover bg-center w-90s md:w-112 h-96 rounded-lg" style={{ backgroundImage:`url(${window.location.origin}${image})`}} />
-                    <div key={1} className="flex flex-row justify-center items-center w-96p h-12 md:h-16 bg-no-repeat rounded-lg bg-cover bg-center top-2 md:top-3 relative material-shadow styled-border styled-background border-2">
+                    <div className="absolute bg-no-repeat bg-cover bg-center w-90s md:w-112 h-96 rounded-lg" style={{ backgroundImage:`url(${window.location.origin}${image})`}} />
+                    <div className="flex flex-row justify-center items-center w-96p h-12 md:h-16 bg-no-repeat rounded-lg bg-cover bg-center top-2 md:top-3 relative material-shadow styled-border styled-background border-2">
                         <h2 className="font-medium text-xl md:text-2xl tracking-wider bright-text">{name}</h2>
                     </div>
                     <motion.div
@@ -77,7 +77,7 @@ export default function ProjectContainer({ project: { name, link, tags, id, desc
                             {description}
                         </p>
                     </motion.div>
-                    <div key={2} className="flex flex-col w-full h-4/5 mt-7 md:mt-4 justify-end items-start">
+                    <div className="flex flex-col w-full h-4/5 mt-7 md:mt-4 justify-end items-start">
                         <div className="h-fit py-2 px-2 w-fit max-w-full flex-wrap-reverse styled-border styled-background border-2 relative rounded-lg mx-3 mb-2 flex flex-row-reverse items-start justify-end gap-3">
                             {tags.map((value, index) => {
                                 return <Tag key={index} name={value} />

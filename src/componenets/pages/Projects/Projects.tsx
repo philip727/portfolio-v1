@@ -36,6 +36,7 @@ export default function Projects() {
                 <ProjectContainer
                     project={project}
                     index={index}
+                    key={index}
                 />
             ))}
         </div>
