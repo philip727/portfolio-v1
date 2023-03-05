@@ -32,7 +32,15 @@ function mail_result() {
 
         mail($mailTo, $subject, $sentMailMessage, $headers);
         $result["success"] = true;
+
+        return $result;
     }
 }
+
+$result = mail_result();
+
+print_r(json_encode($result));
+
+die();
 
 ?>
