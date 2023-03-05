@@ -14,35 +14,36 @@ export default function Contact() {
     };
 
     const onSubmit = () => {
-        const data = new URLSearchParams();
-        data.append("name", mailData["name"]);
-        data.append("email", mailData["email"]);
-        data.append("subject", mailData["subject"]);
-        data.append("message", mailData["message"]);
+        console.log("this does not work yet.")
+        // const data = new URLSearchParams();
+        // data.append("name", mailData["name"]);
+        // data.append("email", mailData["email"]);
+        // data.append("subject", mailData["subject"]);
+        // data.append("message", mailData["message"]);
 
-        fetch(`${window.location.origin}/php/mail.php`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: data,
-            mode: "no-cors",
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success === true) {
-                console.log("success");
+        // fetch(`${window.location.origin}/php/mail.php`, {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/x-www-form-urlencoded",
+        //     },
+        //     body: data,
+        //     mode: "no-cors",
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     if (data.success === true) {
+        //         console.log("success");
 
-                return;
-            }
+        //         return;
+        //     }
 
-            console.log(data.error[0]["mail"]);
-        })
-        .catch(err => console.log(err));
+        //     console.log(data.error[0]["mail"]);
+        // })
+        // .catch(err => console.log(err));
     };
 
     const handleDataChange = (event: ChangeEvent<HTMLInputElement>) => {
-        mailData[event.target.name] = event.target.textContent ?? "";
+        mailData[event.target.name] = event.target.value ?? "";
     };
 
     return (
@@ -86,7 +87,7 @@ export default function Contact() {
                         className="h-16 mt-6 w-fit px-4 darkish-background rounded-md flex items-center gap-4 button transition-shadow transition-color duration-300"
                     >
                         <p className="text-2xl font-bold tracking-wider">
-                            SEND MAIL
+                            SEND
                         </p>
                         {/* <img src={`${window.location.origin}/images/contact/mail-green.svg`} className="h-16 w-16 mx-auto -left-1 relative" /> */}
                     </button>
