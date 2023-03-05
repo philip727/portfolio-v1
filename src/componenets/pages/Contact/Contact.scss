@@ -1,15 +1,15 @@
 .input {
     color: #ededed;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-
+    box-shadow: none;
+    
     &::placeholder {
         color: #cacaca
     }
-
+    
     &:focus {
-
+        
         color: #32f1a2;
-        box-shadow: none;
+        box-shadow: rgba(109, 123, 140, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
         &::placeholder {
             color: #32f1a2;
@@ -18,15 +18,11 @@
 }
 
 .button {
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-
+    box-shadow: none;
     &:hover {
-        box-shadow: none;
-        
+        box-shadow: rgba(109, 123, 140, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
         p {
             color: #32f1a2;
         }
     }
-
-
 }

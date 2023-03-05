@@ -23,11 +23,19 @@ module.exports = {
                 50: "50%",
             },
             width: {
+                // Rem
+                '78': '19rem',
                 '112': '36rem',
-                '90s': '90vw',
+                '132': '39.5rem',
+                '136': '43rem',
                 '140': '49.5rem',
                 '156': '53rem',
                 "180": '62rem',
+
+                // View Width
+                '90s': '90vw',
+
+                // Percent
                 '95p': '95%',
             },
             height: {
