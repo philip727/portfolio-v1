@@ -14,23 +14,20 @@ export default function Contact() {
     };
 
     const onSubmit = () => {
-        console.log("this does not work yet.")
-        // const data = new URLSearchParams();
-        // data.append("name", mailData["name"]);
-        // data.append("email", mailData["email"]);
-        // data.append("subject", mailData["subject"]);
-        // data.append("message", mailData["message"]);
+        const data = new URLSearchParams();
+        data.append("name", mailData["name"]);
+        data.append("email", mailData["email"]);
+        data.append("subject", mailData["subject"]);
+        data.append("message", mailData["message"]);
 
-        // fetch(`${window.location.origin}/php/mail.php`, {
+        // fetch(`http://13.40.136.147/php/mail.php`, {
         //     method: "POST",
         //     headers: {
         //         "Content-Type": "application/x-www-form-urlencoded",
         //     },
         //     body: data,
         //     mode: "no-cors",
-        // })
-        // .then(response => response.json())
-        // .then(data => {
+        // }).then(response => response.json()).then(data => {
         //     if (data.success === true) {
         //         console.log("success");
 
@@ -38,8 +35,23 @@ export default function Contact() {
         //     }
 
         //     console.log(data.error[0]["mail"]);
-        // })
-        // .catch(err => console.log(err));
+        // }).catch(err => console.log(err));
+
+        fetch(`http://13.40.136.147/php/mail.php`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: data,
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.success)
+            
+
+            console.log(data.error[0].mail)
+        })
+        .catch(err => console.log(`error: ${err}`))
     };
 
     const handleDataChange = (event: ChangeEvent<HTMLInputElement>) => {

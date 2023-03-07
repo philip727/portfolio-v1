@@ -1,8 +1,26 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Accept");
+
+function post_request($url, $data)
+{
+    $post_data = http_build_query($data);
+    $opts = [
+        "http" => [
+            "method" => "POST",
+            "header" => "Content-type: application/x-www-form-urlencoded",
+            "content" => $post_data,
+        ],
+    ];
+    $context = stream_context_create($opts);
+    $response = file_get_contents($url, false, $context);
+
+    return $response;
+}
 
 function mail_result() {
     $result = [
-        "success" =>  null,
+        "success" => null,
         "response" => [
             "error" => [],
         ],
@@ -35,6 +53,11 @@ function mail_result() {
 
         return $result;
     }
+
+    $result["success"] = false;
+    $result["error"][0]["mail"] = "Headers failed";
+    
+    return $result;
 }
 
 $result = mail_result();
