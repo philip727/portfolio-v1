@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useRef } from "react";
 import "./Contact.scss";
 
 type MailData = {
@@ -6,19 +6,21 @@ type MailData = {
 };
 
 export default function Contact() {
-    const mailData: MailData = {
+    let data = null;
+    const mailData = useRef<MailData>({
         name: "",
         email: "",
         subject: "",
         message: "",
-    };
+    });
 
     const onSubmit = () => {
-        const data = new URLSearchParams();
-        data.append("name", mailData["name"]);
-        data.append("email", mailData["email"]);
-        data.append("subject", mailData["subject"]);
-        data.append("message", mailData["message"]);
+        data = new URLSearchParams();
+        console.log(mailData);
+        data.append("name", mailData.current["name"]);
+        data.append("email", mailData.current["email"]);
+        data.append("subject", mailData.current["subject"]);
+        data.append("message", mailData.current["message"]);
 
         // fetch(`http://13.40.136.147/php/mail.php`, {
         //     method: "POST",
@@ -46,16 +48,16 @@ export default function Contact() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data.success)
-            
-
-            console.log(data.error[0].mail)
+            console.log(data)
+        
+        
+            // console.log(data.error[0].mail)
         })
         .catch(err => console.log(`error: ${err}`))
     };
 
-    const handleDataChange = (event: ChangeEvent<HTMLInputElement>) => {
-        mailData[event.target.name] = event.target.value ?? "";
+    const handleDataChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
+        mailData.current = { ...mailData.current, [event.target.name]: event.target.value ?? "" };
     };
 
     return (
@@ -76,6 +78,9 @@ export default function Contact() {
                         type="email"
                         name="email"
                         placeholder="Email"
+                        onChange={(event) => {
+                            handleDataChange(event);
+                        }}
                         className="h-9 ml-3 w-78 rounded-md focus:outline-none px-2 darkish-background input transition-shadow transition-color duration-300"
                         required
                     />
@@ -84,12 +89,18 @@ export default function Contact() {
                     type="text"
                     name="subject"
                     placeholder="Subject"
+                    onChange={(event) => {
+                        handleDataChange(event);
+                    }}
                     className="h-9 mt-6 w-132 rounded-md focus:outline-none px-2 darkish-background input transition-shadow transition-color duration-300"
                     required
                 />
                 <textarea
                     name="message"
                     placeholder="Message"
+                    onChange={(event) => {
+                        handleDataChange(event);
+                    }}
                     className="h-64 mt-6 w-132 rounded-md focus:outline-none px-2 pt-1 darkish-background resize-none input transition-shadow transition-color duration-300"
                     required
                 />

@@ -2,22 +2,6 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Accept");
 
-function post_request($url, $data)
-{
-    $post_data = http_build_query($data);
-    $opts = [
-        "http" => [
-            "method" => "POST",
-            "header" => "Content-type: application/x-www-form-urlencoded",
-            "content" => $post_data,
-        ],
-    ];
-    $context = stream_context_create($opts);
-    $response = file_get_contents($url, false, $context);
-
-    return $response;
-}
-
 function mail_result() {
     $result = [
         "success" => null,
@@ -25,8 +9,7 @@ function mail_result() {
             "error" => [],
         ],
     ];
-
-
+    
     if(isset($_POST['name']) && isset($_POST['email']) && $_POST['subject'] && $_POST['message']) {
         $name = $_POST['name'];
         $email = $_POST['email'];
@@ -61,6 +44,7 @@ function mail_result() {
 }
 
 $result = mail_result();
+
 
 print_r(json_encode($result));
 
