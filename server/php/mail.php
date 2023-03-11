@@ -27,18 +27,17 @@ function mail_result() {
             return $result;
         };
 
-        $mailTo = "hutchinson.philip02@gmail.com";
-        $headers = "Email: ".$email;
-        $sentMailMessage =  "Name: ".$name."\n\n".$message;
+        $headers = "From: <$email>\r\nTo: <hutchinson.philip02@gmail.com>";
+        $sentMailMessage =  "Name: " . $name . "\n\n" . $message;
 
-        mail($mailTo, $subject, $sentMailMessage, $headers);
+        mail("<hutchinson.philip02@gmail.com>", $subject, $sentMailMessage, $headers);
         $result["success"] = true;
 
         return $result;
     }
 
     $result["success"] = false;
-    $result["error"][0]["mail"] = "Headers failed";
+    $result["error"][0]["mail"] = "Fill in all required fields.";
     
     return $result;
 }

@@ -15,18 +15,26 @@ const ProjectsArray: Project[] = [
     {
         name: "Untitlted Survival Game",
         id: 1,
-        description: "Top down 16-bit survival game passion project.",
+        description: "Top down 16-bit survival game passion project",
         image: "/images/projects/SurvivalGame/world-gen-preview.png",
         tags: ["C#", "Unity"],
     },
     {
         name: "CPJourney Create Account",
         id: 2,
-        description: "Recreation of the original Club Penguin create account page for CPJourney",
+        description: "Recreation of the original Club Penguin create account page for CPJourney (not in use yet)",
         image: "/images/projects/CPJourney-Create-Acc/create-acc-preview.png",
         tags: ["React", "Typescript", "Javascript", "PHP", "CSS", "SASS", "Tailwind"],
         link: "https://play.cpjourney.net/create/",
     },
+    {
+        name: "P-Crypt",
+        id: 3,
+        description: "Simple CLI program that allows you to use different types of encryption",
+        image: "/images/projects/P-Crypt/pcrypt.png",
+        tags: ["Python"],
+        link: "https://github.com/95827571/p-crypt",
+    }
 ];
 
 export default function Projects() {
