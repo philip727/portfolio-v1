@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./Navbar.css";
 import React from "react";
 import PhoneNavbar from "./PhoneNavbar";
@@ -24,12 +24,14 @@ export default function Navbar({ pages }: Props): JSX.Element {
             >
 
             </div>
-            <h1
-                className="text-center h-fit font-semibold text-4xl flex justify-center items-center tracking-wider w-1/3"
-                id="navbar-title"
-            >
-                PHILIP
-            </h1>
+            <Link to="/" >
+                <h1
+                    className="text-center h-fit font-semibold text-4xl flex justify-center items-center tracking-wider w-1/3"
+                    id="navbar-title"
+                >
+                    PHILIP
+                </h1>
+            </Link>
             <div className="w-1/3 h-full">
                 <div
                     id="navbar-link-wrapper"

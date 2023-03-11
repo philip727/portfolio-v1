@@ -19,7 +19,7 @@ export default function ProjectContainer({ project: { name, link, tags, id, desc
             y: 0,
             opacity: 1,
             transition: { 
-                delay: 0.2 * (index + 1) 
+                delay: window.screen.height < 571 || window.screen.width < 1320 ? 0.2 : 0.2 * (index + 1)
             }
         },
         hover: {
@@ -50,7 +50,7 @@ export default function ProjectContainer({ project: { name, link, tags, id, desc
                     variants={staggeredProject}
                     initial="hidden"
                     whileInView="show"
-                    exit="hidden"
+                    viewport={{once: true}}
                     whileHover="hover"
                     whileTap="tap"
                     onHoverStart={() => {

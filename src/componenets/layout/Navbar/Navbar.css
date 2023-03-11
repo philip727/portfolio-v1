@@ -1,3 +1,7 @@
 .navbar-button-origin {
     transform-origin: top right;
 }
+
+.navbar-button-transition {
+    transition-property: border-radius;
+}

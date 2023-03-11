@@ -36,7 +36,7 @@ export default function Introduction() {
     const scrollRef = useRef(null)
 
     return (
-        <div className="h-full w-full flex justify-start items-center flex-col">
+        <div className="h-full w-full flex justify-start items-center flex-col overflow-x-hidden">
             <div ref={scrollRef} className="max-w-slider w-full mt-56">
                 <AnimatePresence>
                     <motion.h2 
