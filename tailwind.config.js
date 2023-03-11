@@ -4,7 +4,9 @@ module.exports = {
     theme: {
         screens: {
             sp: "200px",
+            gf: "281px",
             mp: "350px",
+            mbp: "380px",
             bp: "500px",
             sm: "640px",
             md: "768px",
@@ -26,6 +28,7 @@ module.exports = {
                 // Rem
                 '78': '19rem',
                 '112': '36rem',
+                '116': '37rem',
                 '120': '38rem',
                 '132': '39.5rem',
                 '136': '43rem',
@@ -43,6 +46,7 @@ module.exports = {
                 '100': '25rem',
                 '108': '32rem',
                 '112': '36rem',
+                '136': '43rem',
             }
         },
     },

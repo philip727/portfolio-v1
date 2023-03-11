@@ -1,14 +1,14 @@
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import React from "react";
-import ThemeButton from "./ThemeButton/ThemeButton";
+import PhoneNavbar from "./PhoneNavbar";
 
-type Page = {
+export type Page = {
     name: string;
     link: string;
 }
 
-interface Props {
+export interface Props {
     pages: Page[];
 }
 
@@ -16,7 +16,7 @@ export default function Navbar({ pages }: Props): JSX.Element {
     return (
         <div
             id="navbar-wrapper"
-            className="fixed flex gap-0 justify-between items-center w-screen backdrop-blur-2xl z-50 material-shadow h-12 sm:h-16"
+            className="fixed flex gap-0 justify-between items-center w-screen backdrop-blur-2xl z-50 material-shadow h-16"
         >
             <div
                 className="w-1/3 h-full flex justify-start items-center"
@@ -33,18 +33,21 @@ export default function Navbar({ pages }: Props): JSX.Element {
             <div className="w-1/3 h-full">
                 <div
                     id="navbar-link-wrapper"
-                    className="h-full flex flex-row justify-center items-center gap-3 2xl:gap-7 mr-9 invisible xl:visible w-full"
+                    className="h-full flex-row justify-center items-center gap-3 2xl:gap-7 mr-9 hidden xl:flex w-full"
                 >
                     {pages.map((page, index) => {
                         return createNavbarButton(page.name, page.link, index);
                     })}
+                </div>
+                <div className="h-full flex xl:hidden flex-row justify-end items-center">
+                    <PhoneNavbar pages={pages} />
                 </div>
             </div>
         </div>
     );
 }
 
-const createNavbarButton = (name: string,link: string,index: number): JSX.Element => {
+export const createNavbarButton = (name: string,link: string,index: number): JSX.Element => {
     return (
         <NavLink
             key={index}

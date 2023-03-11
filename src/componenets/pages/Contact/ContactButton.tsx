@@ -41,12 +41,10 @@ export default function ContactButton({ imageSrc, link, text, index, delayIndex=
         }
     }
 
-
-
     return (
         <a href={link} target="_blank" key={index}>
             <motion.div 
-                className="w-120 h-24 rounded-xl styled-background shopify-shadow border-2 styled-border flex justify-start items-center"
+                className="w-24 sm:w-120 h-24 rounded-xl styled-background shopify-shadow border-2 styled-border flex justify-center sm:justify-start items-center"
                 variants={animation}
                 initial="hidden"
                 whileInView="show"
@@ -57,9 +55,9 @@ export default function ContactButton({ imageSrc, link, text, index, delayIndex=
             >
                 <img
                     src={`${window.location.origin}/${imageSrc}`}
-                    className="h-16 w-16 ml-3 shopify-shadow"
+                    className="h-16 w-16 ml-0 sm:ml-3 shopify-shadow"
                 />
-                <h1 className=" text-3xl ml-4">{text}</h1>
+                <h1 className="text-3xl ml-4 hidden sm:block">{text}</h1>
             </motion.div>
         </a>
     );
