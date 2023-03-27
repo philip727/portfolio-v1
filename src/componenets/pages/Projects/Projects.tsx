@@ -32,14 +32,14 @@ const ProjectsArray: Project[] = [
         id: 3,
         description: "Simple CLI program that allows you to use different types of encryption",
         image: "/images/projects/P-Crypt/pcrypt.png",
-        tags: ["Python"],
-        link: "https://github.com/95827571/p-crypt",
+        tags: ["Python", "Rust"],
+        link: "https://github.com/philip727/p-crypt",
     }
 ];
 
 export default function Projects() {
     return (
-        <div className="flex flex-row justify-center items-start top-36 relative gap-6 md:gap-14 flex-wrap mx-2 md:mx-14 pb-6 md:pb-0">
+        <div className="flex flex-row justify-center items-start top-36 relative gap-6 md:gap-14 flex-wrap mx-2 md:mx-14 pb-6">
             {ProjectsArray.map((project, index) => (
                 <ProjectContainer
                     project={project}
