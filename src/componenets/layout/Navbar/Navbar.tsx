@@ -2,6 +2,7 @@ import { NavLink, Link } from "react-router-dom";
 import "./Navbar.css";
 import React from "react";
 import PhoneNavbar from "./PhoneNavbar";
+import ResumeButton from "./ResumeButton/ResumeButton";
 
 export type Page = {
     name: string;
@@ -22,9 +23,9 @@ export default function Navbar({ pages }: Props): JSX.Element {
                 className="w-1/3 h-full flex justify-start items-center"
                 id="navbar-btn-wrapper"
             >
-
+                <ResumeButton />
             </div>
-            <Link to="/" >
+            <Link to="/" className="flex flex-row justify-center w-1/3" >
                 <h1
                     className="text-center h-fit font-semibold text-4xl flex justify-center items-center tracking-wider w-1/3"
                     id="navbar-title"

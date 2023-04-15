@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import React, { useState, useRef } from "react";
 import { Link } from 'react-router-dom'
 import Tag from "../../extras/Tag";
@@ -10,8 +10,8 @@ interface Props {
 }
 
 export default function ProjectContainer({ project: { name, link, tags, id, description, image }, index }: Props): JSX.Element {
-    const [isHovered, setIsHovered] = useState(false)
-    const tooltipRef = useRef<HTMLDivElement>(null);
+    const tooltipControls = useAnimationControls();
+
 
     const staggeredProject = {
         hidden: { y: 45, opacity: 0 },
@@ -42,9 +42,23 @@ export default function ProjectContainer({ project: { name, link, tags, id, desc
             } 
         }
     }
+
+    const tooltipAnimations = {
+        appear: { opacity: 1 },
+        disappear: { opacity: 0 },
+    }
+
+    const onHover = () => {
+        tooltipControls.start("appear");
+    }
+    
+    const offHover = () => {
+        tooltipControls.start("disappear");
+    }
+
     return (
-        <AnimatePresence key={index}>
-            <Link to={link ? link : "#"}>   
+        <AnimatePresence>
+            <Link to={link ? link : "#"} >   
                 <motion.div 
                     className="project-container h-96 w-90s md:w-112 rounded-lg material-shadow flex flex-col items-center select-none"
                     variants={staggeredProject}
@@ -54,21 +68,23 @@ export default function ProjectContainer({ project: { name, link, tags, id, desc
                     whileHover="hover"
                     whileTap="tap"
                     onHoverStart={() => {
-                        setIsHovered(true);
+                        onHover();
                     }}
                     onHoverEnd={() => {
-                        setIsHovered(false);
+                        offHover();
                     }}
-                    key={index}
+                    key={id}
                 >
                     <div className="absolute bg-no-repeat bg-cover bg-center w-90s md:w-112 h-96 rounded-lg" style={{ backgroundImage:`url(${window.location.origin}${image})`}} />
                     <div className="flex flex-row justify-center items-center w-96p h-12 md:h-16 bg-no-repeat rounded-lg bg-cover bg-center top-2 md:top-3 relative material-shadow styled-border styled-background border-2">
                         <h2 className="font-medium text-xl md:text-2xl tracking-wider bright-text">{name}</h2>
                     </div>
                     <motion.div
-                        initial={{ opacity: 0}}
-                        animate={{ opacity: isHovered ? 1 : 0 }}
-                        ref={tooltipRef}
+                        initial="disappear"
+                        variants={tooltipAnimations}
+                        animate={tooltipControls}
+                        key={id}
+                        transition={{duration: 0}}
                         className="break-words h-fit w-fit m-4 max-w-md absolute z-50 break-normal select-none top-24 px-4 py-4 styled-background-half rounded-2xl backdrop-blur-lg material-shadow"
                     >
                         <p

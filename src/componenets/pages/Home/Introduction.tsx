@@ -70,7 +70,7 @@ export default function Introduction() {
                         key={3}
                         className="text-left text-3xl bp:text-4xl w-intro-text break-words mt-3"
                     >
-                        I'm A 20 year-old developer from the UK with a passion
+                        I'm a 20 year-old developer from the UK with a passion
                         to write {" "}
                         <NavLink
                             id="code-write-link"

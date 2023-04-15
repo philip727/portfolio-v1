@@ -13,7 +13,7 @@ export type Project = {
 
 const ProjectsArray: Project[] = [
     {
-        name: "Untitlted Survival Game",
+        name: "Horizon's Edge",
         id: 1,
         description: "Top down 16-bit survival game passion project",
         image: "/images/projects/SurvivalGame/world-gen-preview.png",
@@ -24,16 +24,16 @@ const ProjectsArray: Project[] = [
         id: 2,
         description: "Recreation of the original Club Penguin create account page for CPJourney (not in use yet)",
         image: "/images/projects/CPJourney-Create-Acc/create-acc-preview.png",
-        tags: ["React", "Typescript", "Javascript", "PHP", "CSS", "SASS", "Tailwind"],
+        tags: ["React", "Typescript", "Javascript", "PHP", "CSS", "SCSS", "Tailwind"],
         link: "https://play.cpjourney.net/create/",
     },
     {
-        name: "P-Crypt",
+        name: "Galaxy Forum",
         id: 3,
-        description: "Simple CLI program that allows you to use different types of encryption",
-        image: "/images/projects/P-Crypt/pcrypt.png",
-        tags: ["Python", "Rust"],
-        link: "https://github.com/philip727/p-crypt",
+        description: "Full stack feature rich forum using React, Redux, NodeJS, Express, MySQL, written in TypeScript",
+        image: "/images/projects/GalaxyForum/preview.png",
+        tags: ["React", "Redux", "Node", "Express", "Typescript", "MySQL", "SCSS", "Tailwind"],
+        link: "https://github.com/philip727/galaxy-themed-forum"
     }
 ];
 

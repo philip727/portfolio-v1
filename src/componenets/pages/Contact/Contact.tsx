@@ -8,8 +8,8 @@ export default function Contact() {
     const links: Props[] = 
     [
         {
-            text: "github.com/95827571",
-            link: "https://github.com/95827571" ,
+            text: "github.com/philip727",
+            link: "https://github.com/philip727" ,
             imageSrc: "images/contact/github-green.svg",
         },
         {
@@ -35,7 +35,7 @@ export default function Contact() {
                 <p className="text-xl font-medium mt-4 w-screen sm:w-116 px-8 sm:px-0 text-center">
                     Looking for new opportunities, please get in touch! 
                     My inbox is always open and I will try to respond as fast as possible!
-                    </p>
+                </p>
             </motion.div>
             <div className="relative flex justify-center items-center flex-row sm:flex-col flex-wrap sm:flex-nowrap w-screen top-64 h-fit gap-6 pb-10">
                 {links.map((item, index) => {
